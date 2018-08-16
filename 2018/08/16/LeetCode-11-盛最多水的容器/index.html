@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="LeetCode," />
 
 
 
@@ -81,16 +81,21 @@
 
 
 
-<meta name="description" content="There&apos;s a phrase in Buddhism, &apos;Beginner&apos;s mind.&apos; It&apos;s wonderful to have a beginner&apos;s mind">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Huangzhy&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/categories/数据结构与算法/index.html">
+<meta name="description" content="题目描述   思路 理解  木桶效应：一只木桶能盛多少水，并不取决于最长的那块木板，而是取决于最短的那块木板 显然，这道题也是如此：   我们需要选择两块相对长度较长的木板（纵坐标的大小）：height[i], height[j]，同时两块木板的间隔也要足够大j-i，则此时能装的水为：min(height[i], height[j]) * (j - i) 思路 我们需要一个变量max_area来保">
+<meta name="keywords" content="LeetCode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode 11 盛最多水的容器">
+<meta property="og:url" content="http://yoursite.com/2018/08/16/LeetCode-11-盛最多水的容器/index.html">
 <meta property="og:site_name" content="Huangzhy&#39;s Blog">
-<meta property="og:description" content="There&apos;s a phrase in Buddhism, &apos;Beginner&apos;s mind.&apos; It&apos;s wonderful to have a beginner&apos;s mind">
+<meta property="og:description" content="题目描述   思路 理解  木桶效应：一只木桶能盛多少水，并不取决于最长的那块木板，而是取决于最短的那块木板 显然，这道题也是如此：   我们需要选择两块相对长度较长的木板（纵坐标的大小）：height[i], height[j]，同时两块木板的间隔也要足够大j-i，则此时能装的水为：min(height[i], height[j]) * (j - i) 思路 我们需要一个变量max_area来保">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/LeetCode-11-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/%E5%9B%BE1.png">
+<meta property="og:image" content="http://yoursite.com/images/LeetCode-11-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/%E5%9B%BE2.png">
+<meta property="og:updated_time" content="2018-08-16T10:49:01.454Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Huangzhy&#39;s Blog">
-<meta name="twitter:description" content="There&apos;s a phrase in Buddhism, &apos;Beginner&apos;s mind.&apos; It&apos;s wonderful to have a beginner&apos;s mind">
+<meta name="twitter:title" content="LeetCode 11 盛最多水的容器">
+<meta name="twitter:description" content="题目描述   思路 理解  木桶效应：一只木桶能盛多少水，并不取决于最长的那块木板，而是取决于最短的那块木板 显然，这道题也是如此：   我们需要选择两块相对长度较长的木板（纵坐标的大小）：height[i], height[j]，同时两块木板的间隔也要足够大j-i，则此时能装的水为：min(height[i], height[j]) * (j - i) 思路 我们需要一个变量max_area来保">
+<meta name="twitter:image" content="http://yoursite.com/images/LeetCode-11-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/%E5%9B%BE1.png">
 
 
 
@@ -120,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/数据结构与算法/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/16/LeetCode-11-盛最多水的容器/"/>
 
 
 
 
 
-  <title>分类: 数据结构与算法 | Huangzhy's Blog</title>
+  <title>LeetCode 11 盛最多水的容器 | Huangzhy's Blog</title>
   
 
 
@@ -145,7 +150,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -283,139 +288,225 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>数据结构与算法<small>分类</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/16/LeetCode-11-盛最多水的容器/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Huang Zhenyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/vox.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huangzhy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/08/16/LeetCode-11-盛最多水的容器/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 11 盛最多水的容器</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">LeetCode 11 盛最多水的容器</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-16T18:46:36+08:00"
-              content="2018-08-16" >
-          08-16
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-16T18:46:36+08:00">
+                2018-08-16
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-16T18:49:01+08:00">
+                2018-08-16
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/08/16/LeetCode-6-Z字形变换/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 6 Z字形变换</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-16T07:48:50+08:00"
-              content="2018-08-16" >
-          08-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/08/14/LeetCode-5-最长回文子串/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 5.最长回文子串</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-14T20:17:53+08:00"
-              content="2018-08-14" >
-          08-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/08/14/LeetCode-3-无重复字符的最长子串/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 3.无重复字符的最长子串</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-14T20:17:21+08:00"
-              content="2018-08-14" >
-          08-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h2 id="题目描述"><strong>题目描述</strong></h2>
+<p><img src="/images/LeetCode-11-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/%E5%9B%BE1.png" alt="打个马赛克都是爱你的形状"></p>
+<hr>
+<h2 id="思路"><strong>思路</strong></h2>
+<h3 id="理解"><strong>理解</strong></h3>
+<blockquote>
+<p>木桶效应：一只木桶能盛多少水，并不取决于最长的那块木板，而是取决于最短的那块木板
+显然，这道题也是如此：
+<img src="/images/LeetCode-11-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/%E5%9B%BE2.png" alt="打个马赛克都是爱你的形状"></p>
+</blockquote>
+<p>我们需要选择两块相对长度较长的木板（纵坐标的大小）：<code>height[i], height[j]</code>，同时两块木板的间隔也要足够大<code>j-i</code>，则此时能装的水为：<code>min(height[i], height[j]) * (j - i)</code></p>
+<h3 id="思路-v2"><strong>思路</strong></h3>
+<p>我们需要一个变量<code>max_area</code>来保存能装的水体积最大值，用两个指针（下标<code>i</code>和<code>j</code>）分别遍历</p>
+<hr>
+<h2 id="代码"><strong>代码</strong></h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getArea</span><span class="params">(<span class="keyword">int</span> i_val, <span class="keyword">int</span> j_val, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> min(i_val, j_val) * (j - i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; height)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> height_sz = height.size();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> max_area = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; height_sz<span class="number">-1</span>; i++)&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; height_sz; j++)&#123;</span><br><span class="line">			<span class="keyword">int</span> curr_area = getArea(height[i], height[j], i, j);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (curr_area &gt; max_area)&#123;</span><br><span class="line">				max_area = curr_area;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> max_area;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate me ! 打赏一下呗~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Huang Zhenyang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/16/LeetCode-6-Z字形变换/" rel="next" title="LeetCode 6 Z字形变换">
+                <i class="fa fa-chevron-left"></i> LeetCode 6 Z字形变换
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -423,6 +514,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODYzMi8xNTE2MA=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -443,8 +543,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -543,6 +652,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#理解"><span class="nav-number">2.1.</span> <span class="nav-text">理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-v2"><span class="nav-number">2.2.</span> <span class="nav-text">思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -696,6 +821,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -724,6 +853,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
