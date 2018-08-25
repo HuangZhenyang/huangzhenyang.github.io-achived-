@@ -81,24 +81,18 @@
 
 
 
-<meta name="description" content="题目描述   思路 把整个问题拆解为： 存储-取  的两个过程； 存储 通过观察我发现的是，当numRows为3时，两列之间的数字的数目为1；当numRows为4时，两列之间的数字的数目为2，以此类推。那么，可不可以将每一列都存起来（col），两列之间的数字也存起来（gap），最后要输出时再通过遍历的方式拼接出结果呢？ 以题目中给的字符串PAYPALISHIRING为例子，将每一列（col）和它右">
+<meta name="description" content="题目描述 https://leetcode-cn.com/problems/sum-of-two-integers/description/ 不使用运算符 + 和-，计算两整数a、b之和。 示例： 若 a = 1 ，b = 2，返回 3。  思路 这里以a=3, b=2为例子，通过位运算实现两数之和   可以通过异或^得到每一位上、没有加上进位的和： 0011 0010 结果为：0001  -&amp;g">
 <meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 6 Z字形变换">
-<meta property="og:url" content="http://yoursite.com/2018/08/16/LeetCode-6-Z字形变换/index.html">
+<meta property="og:title" content="LeetCode 371 两整数之和">
+<meta property="og:url" content="http://yoursite.com/2018/08/25/LeetCode-371-两整数之和/index.html">
 <meta property="og:site_name" content="Huangzhy&#39;s Blog">
-<meta property="og:description" content="题目描述   思路 把整个问题拆解为： 存储-取  的两个过程； 存储 通过观察我发现的是，当numRows为3时，两列之间的数字的数目为1；当numRows为4时，两列之间的数字的数目为2，以此类推。那么，可不可以将每一列都存起来（col），两列之间的数字也存起来（gap），最后要输出时再通过遍历的方式拼接出结果呢？ 以题目中给的字符串PAYPALISHIRING为例子，将每一列（col）和它右">
+<meta property="og:description" content="题目描述 https://leetcode-cn.com/problems/sum-of-two-integers/description/ 不使用运算符 + 和-，计算两整数a、b之和。 示例： 若 a = 1 ，b = 2，返回 3。  思路 这里以a=3, b=2为例子，通过位运算实现两数之和   可以通过异或^得到每一位上、没有加上进位的和： 0011 0010 结果为：0001  -&amp;g">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/LeetCode-6-Z%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png">
-<meta property="og:image" content="http://yoursite.com/images/LeetCode-6-Z%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2/%E5%9B%BE1.png">
-<meta property="og:image" content="http://yoursite.com/images/LeetCode-6-Z%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2/%E5%9B%BE2.png">
-<meta property="og:image" content="http://yoursite.com/images/LeetCode-6-Z%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2/%E5%9B%BE3.png">
-<meta property="og:image" content="http://yoursite.com/images/LeetCode-6-Z%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2/%E5%9B%BE4.png">
-<meta property="og:updated_time" content="2018-08-15T23:51:22.274Z">
+<meta property="og:updated_time" content="2018-08-25T09:16:06.340Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode 6 Z字形变换">
-<meta name="twitter:description" content="题目描述   思路 把整个问题拆解为： 存储-取  的两个过程； 存储 通过观察我发现的是，当numRows为3时，两列之间的数字的数目为1；当numRows为4时，两列之间的数字的数目为2，以此类推。那么，可不可以将每一列都存起来（col），两列之间的数字也存起来（gap），最后要输出时再通过遍历的方式拼接出结果呢？ 以题目中给的字符串PAYPALISHIRING为例子，将每一列（col）和它右">
-<meta name="twitter:image" content="http://yoursite.com/images/LeetCode-6-Z%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png">
+<meta name="twitter:title" content="LeetCode 371 两整数之和">
+<meta name="twitter:description" content="题目描述 https://leetcode-cn.com/problems/sum-of-two-integers/description/ 不使用运算符 + 和-，计算两整数a、b之和。 示例： 若 a = 1 ，b = 2，返回 3。  思路 这里以a=3, b=2为例子，通过位运算实现两数之和   可以通过异或^得到每一位上、没有加上进位的和： 0011 0010 结果为：0001  -&amp;g">
 
 
 
@@ -128,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/16/LeetCode-6-Z字形变换/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/25/LeetCode-371-两整数之和/"/>
 
 
 
 
 
-  <title>LeetCode 6 Z字形变换 | Huangzhy's Blog</title>
+  <title>LeetCode 371 两整数之和 | Huangzhy's Blog</title>
   
 
 
@@ -305,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/16/LeetCode-6-Z字形变换/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/25/LeetCode-371-两整数之和/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huang Zhenyang">
@@ -322,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode 6 Z字形变换</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode 371 两整数之和</h1>
         
 
         <div class="post-meta">
@@ -334,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-16T07:48:50+08:00">
-                2018-08-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-25T17:10:14+08:00">
+                2018-08-25
               </time>
             
 
@@ -350,8 +344,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-16T07:51:22+08:00">
-                2018-08-16
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-25T17:16:06+08:00">
+                2018-08-25
               </time>
             
           </span>
@@ -412,30 +406,33 @@
 
       
         <h2 id="题目描述"><strong>题目描述</strong></h2>
-<p><img src="/images/LeetCode-6-Z%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="打个马赛克都是爱你的形状"></p>
+<p><a href="https://leetcode-cn.com/problems/sum-of-two-integers/description/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/sum-of-two-integers/description/</a></p>
+<p><strong>不使用</strong>运算符 <code>+</code> 和<code>-</code>，计算两整数<code>a</code>、<code>b</code>之和。</p>
+<p><strong>示例：</strong>
+若 <em>a = 1</em> ，<em>b = 2</em>，返回 3。</p>
 <hr>
 <h2 id="思路"><strong>思路</strong></h2>
-<p>把整个问题拆解为： 存储-取  的两个过程；</p>
-<h3 id="存储"><strong>存储</strong></h3>
-<p>通过观察我发现的是，当<code>numRows</code>为3时，两列之间的数字的数目为1；当<code>numRows</code>为4时，两列之间的数字的数目为2，以此类推。那么，可不可以将每一列都存起来（<code>col</code>），两列之间的数字也存起来（<code>gap</code>），最后要输出时再通过遍历的方式拼接出结果呢？</p>
-<p>以题目中给的字符串<code>PAYPALISHIRING</code>为例子，将每一列（<code>col</code>）和它右边的两列之间的数字（<code>gap</code>）作为一组：
-<img src="/images/LeetCode-6-Z%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2/%E5%9B%BE1.png" alt="打个马赛克都是爱你的形状"></p>
-<p>存储完为：</p>
-<p><img src="/images/LeetCode-6-Z%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2/%E5%9B%BE2.png" alt="打个马赛克都是爱你的形状"></p>
-<h4 id="一个需要注意的问题"><strong>一个需要注意的问题</strong></h4>
-<p>一个需要注意的问题是，有可能在遍历完输入的字符串的时候，没有来得及存储当前的子数组，这个时候可以通过引入一个遍历，在循环外补充最后一次的存储操作（详见代码）；</p>
-<h3 id="取"><strong>取</strong></h3>
-<h4 id="取首尾两行"><strong>取首尾两行</strong></h4>
-<p>那么，接下来，可以先取首行和尾行的字符串拼接成<code>head</code>和<code>tail</code>，因为首尾两行是不涉及两列之间的数据的，由上图就可以知道:
-<img src="/images/LeetCode-6-Z%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2/%E5%9B%BE3.png" alt="打个马赛克都是爱你的形状"></p>
-<p>首尾两行也就是二维数组<code>col</code>中，每一个子数组的第一个元素即为首，最后一个元素即为尾；</p>
-<h4 id="取中间的行"><strong>取中间的行</strong></h4>
-<p>如果要取中间的行，就会发现其实上面中，那样存储时，<code>gap</code>这个是错的，因为，在存储时，是按照原来字符串的字符顺序存储的，比如<code>gap</code>的第一个子数组<code>['A', 'L']</code>，但是，在得出结果时，是先遍历得到第二行的<code>L</code>，然后才是第三行的<code>A</code>。因此，<strong>在存储gap的时候，需要对每个子数组进行逆序操作</strong>，正确的存储结果应该为：</p>
-<p><img src="/images/LeetCode-6-Z%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2/%E5%9B%BE4.png" alt="打个马赛克都是爱你的形状"></p>
-<p>遍历出第二行的结果为：<code>ALSIG</code>， 第三行结果为: <code>YAHR</code></p>
+<p>这里以<code>a=3, b=2</code>为例子，通过位运算实现两数之和</p>
+<ol>
+<li>
+<p>可以通过异或<code>^</code>得到每一位上、没有加上进位的和：
+0011
+0010
+结果为：0001  -&gt; 没有加上进位的和</p>
+</li>
+<li>
+<p>可以通过<code>&amp;</code>，再左移一位（第零位的进位输入为0），得到每一位上的进位
+0011
+0010
+结果为：0010  -&gt;每一位上的进位</p>
+</li>
+<li>
+<p>当没有进位的时候，<code>sum</code>即为结果，否则，上一次循环的<code>sum</code>与<code>carry</code>接着重复1、2</p>
+</li>
+</ol>
 <hr>
 <h2 id="代码"><strong>代码</strong></h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">charToStr</span><span class="params">(<span class="keyword">char</span> c)</span></span>&#123; <span class="comment">// 将char转成string, 需要引入 &lt;sstream&gt;头文件</span></span><br><span class="line">	<span class="built_in">stringstream</span> stream;</span><br><span class="line">	stream &lt;&lt; c;</span><br><span class="line">	<span class="keyword">return</span> stream.str();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">convert</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> numRows)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (numRows == <span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> s;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> s_sz = s.size();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (s_sz == <span class="number">0</span> || s_sz == <span class="number">1</span>)</span><br><span class="line">		<span class="keyword">return</span> s;</span><br><span class="line"></span><br><span class="line">	<span class="comment">///////////////     存储的过程     ////////////////////</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> gap_num = numRows - <span class="number">2</span>;  <span class="comment">// numRows:3，gap_num:1</span></span><br><span class="line">								<span class="comment">// numRows:4，gap_num:2</span></span><br><span class="line">	<span class="comment">// 3 1 3 1 3 1 ;  每一个3代表了含有三个数据的数组，如[PAY] </span></span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&gt; col; <span class="comment">// 存储每一列的数据，如[PAY] [ALI] [HIR]</span></span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&gt; gap; <span class="comment">// 存储列与列之间的数据，如[P] [S] [I]</span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt; tmp_col(numRows);</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt; tmp_gap(gap_num);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> flag = <span class="number">0</span>; <span class="comment">// 有可能出现i==s_sz，但是没有存储对应的tmp_col和tmp_gap的情况</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>, m = <span class="number">0</span>, n = <span class="number">0</span>; i &lt; s_sz; )&#123; <span class="comment">// j控制一维数组的下标， m控制列， n控制gap</span></span><br><span class="line">		flag = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (m != numRows)&#123;  </span><br><span class="line">			tmp_col[m] = s[i];</span><br><span class="line">			m ++;</span><br><span class="line">			i++;</span><br><span class="line"></span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123; <span class="comment">// 列遍历完了</span></span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span> (n != gap_num)&#123;</span><br><span class="line">				tmp_gap[n] = s[i];</span><br><span class="line">				n++;</span><br><span class="line">				i++;</span><br><span class="line"></span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123; <span class="comment">// m == numRows &amp;&amp; n == gap_num</span></span><br><span class="line">				flag = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">				col.push_back(tmp_col);</span><br><span class="line">				tmp_col.clear();</span><br><span class="line">				tmp_col.resize(numRows);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// gap数据需要逆序一下再存入，因为输出的时候是按行从上到下输出的</span></span><br><span class="line">				reverse(tmp_gap.begin(), tmp_gap.end());</span><br><span class="line">				gap.push_back(tmp_gap);</span><br><span class="line">				tmp_gap.clear();</span><br><span class="line">				tmp_gap.resize(gap_num);</span><br><span class="line"></span><br><span class="line">				m = <span class="number">0</span>;</span><br><span class="line">				n = <span class="number">0</span>;</span><br><span class="line">				j++;</span><br><span class="line"></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (flag == <span class="number">0</span>)&#123; <span class="comment">// 如果最后一次，没有存储tmp_col和tmp_gap</span></span><br><span class="line">		col.push_back(tmp_col);</span><br><span class="line"></span><br><span class="line">		reverse(tmp_gap.begin(), tmp_gap.end());</span><br><span class="line">		gap.push_back(tmp_gap);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">///////////////     取字符的过程     ////////////////////</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 空的部分为'\0'，不进行处理</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> set_num = s_sz / (numRows + gap_num); <span class="comment">// 组数，不包括多余的</span></span><br><span class="line">	<span class="keyword">if</span> (s_sz % (numRows + gap_num) != <span class="number">0</span>)</span><br><span class="line">		set_num += <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//先取出首尾两行</span></span><br><span class="line">	<span class="built_in">string</span> head = <span class="string">""</span>, tail = <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; set_num; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span> (col[i][<span class="number">0</span>] != <span class="string">'\0'</span>)&#123;</span><br><span class="line">			head = head + charToStr(col[i][<span class="number">0</span>]);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (col[i][numRows - <span class="number">1</span>] != <span class="string">'\0'</span>)&#123;</span><br><span class="line">			tail = tail + charToStr(col[i][numRows - <span class="number">1</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 拼中间的</span></span><br><span class="line">	<span class="built_in">string</span> mid = <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; numRows - <span class="number">1</span>; i++)&#123; <span class="comment">// i: 从1到numRows-2  每一个小数组的下标</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; set_num; j++)&#123; <span class="comment">// j: 从0到set_num   组数</span></span><br><span class="line">			<span class="keyword">if</span> (col[j][i] != <span class="string">'\0'</span>)&#123;</span><br><span class="line">				mid = mid + col[j][i];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (gap[j][i - <span class="number">1</span>] != <span class="string">'\0'</span>)&#123;</span><br><span class="line">				mid = mid + gap[j][i - <span class="number">1</span>];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">string</span> res = head + mid + tail;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getSum</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">          <span class="keyword">int</span> sum = a;</span><br><span class="line">          <span class="keyword">int</span> carry = b;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">while</span>(carry)</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="keyword">int</span> tmp = sum;</span><br><span class="line"></span><br><span class="line">            sum = tmp ^ carry;</span><br><span class="line">            carry = (tmp &amp; carry) &lt;&lt; <span class="number">1</span>;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -490,8 +487,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/14/LeetCode-5-最长回文子串/" rel="next" title="LeetCode 5.最长回文子串">
-                <i class="fa fa-chevron-left"></i> LeetCode 5.最长回文子串
+              <a href="/2018/08/25/LeetCode-29-两数相除/" rel="next" title="LeetCode 29 两数相除">
+                <i class="fa fa-chevron-left"></i> LeetCode 29 两数相除
               </a>
             
           </div>
@@ -499,10 +496,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/16/LeetCode-11-盛最多水的容器/" rel="prev" title="LeetCode 11 盛最多水的容器">
-                LeetCode 11 盛最多水的容器 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -678,7 +671,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#存储"><span class="nav-number">2.1.</span> <span class="nav-text">存储</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一个需要注意的问题"><span class="nav-number">2.1.1.</span> <span class="nav-text">一个需要注意的问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#取"><span class="nav-number">2.2.</span> <span class="nav-text">取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#取首尾两行"><span class="nav-number">2.2.1.</span> <span class="nav-text">取首尾两行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#取中间的行"><span class="nav-number">2.2.2.</span> <span class="nav-text">取中间的行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>

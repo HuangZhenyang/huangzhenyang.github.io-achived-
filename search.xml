@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode 371 两整数之和]]></title>
+    <url>%2F2018%2F08%2F25%2FLeetCode-371-%E4%B8%A4%E6%95%B4%E6%95%B0%E4%B9%8B%E5%92%8C%2F</url>
+    <content type="text"><![CDATA[题目描述 https://leetcode-cn.com/problems/sum-of-two-integers/description/ 不使用运算符 + 和-，计算两整数a、b之和。 示例： 若 a = 1 ，b = 2，返回 3。 思路 这里以a=3, b=2为例子，通过位运算实现两数之和 可以通过异或^得到每一位上、没有加上进位的和： 0011 0010 结果为：0001 -&gt; 没有加上进位的和 可以通过&amp;，再左移一位（第零位的进位输入为0），得到每一位上的进位 0011 0010 结果为：0010 -&gt;每一位上的进位 当没有进位的时候，sum即为结果，否则，上一次循环的sum与carry接着重复1、2 代码 1234567891011121314int getSum(int a, int b) &#123; int sum = a; int carry = b; while(carry) &#123; int tmp = sum; sum = tmp ^ carry; carry = (tmp &amp; carry) &lt;&lt; 1; &#125; return sum; &#125;]]></content>
+      <categories>
+        <category>数据结构与算法</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode 29 两数相除]]></title>
     <url>%2F2018%2F08%2F25%2FLeetCode-29-%E4%B8%A4%E6%95%B0%E7%9B%B8%E9%99%A4%2F</url>
     <content type="text"><![CDATA[题目描述 https://leetcode-cn.com/problems/divide-two-integers/description/ 给定两个整数，被除数 dividend 和除数 divisor。将两数相除，要求不使用乘法、除法和 mod 运算符。 返回被除数 dividend 除以除数 divisor 得到的商。 示例 1: 输入: dividend = 10, divisor = 3 输出: 3 示例 2: 输入: dividend = 7, divisor = -3 输出: -2 说明: 被除数和除数均为 32 位有符号整数。 除数不为 0。 假设我们的环境只能存储 32 位有符号整数，其数值范围是 [−231, 231 − 1]。本题中，如果除法结果溢出，则返回 231 − 1。 思路 需要判断结果的符号 在数的二进制表示中，首位为1表示负数，0表示正数； 那么，通过两数异或 (^) 操作，即可知道结果是否为正：负数 ^ 正数 = 负数 初始的时候，需要将被除数和除数都取绝对值，得到tmp_dividend和tmp_divisor 这里我们要用到位运算实现的加法运算; 取相反数的操作为：按位取反再加1，即 add(~x, 1) 需要注意的是，定义这两个变量的类型为long long，因为该题的测试用例中包含了INT_MIN与INT_MAX的情况 如果输入为-2147483648，并且定义的变量类型为int，那么得到的结果与预期不符，原因在于-2147483648相反数为2147483648 &gt; INT_MAX产生了溢出 （哭晕在厕所，这道题的case真的很严格(ಥ_ಥ)） 主要思路就是用被除数减去除数，用变量res保存解，也就是减去了多少个除数 数m左移n位，结果为m × 2n 为了加快速度，可以每次减去除数x2，通过左移 (&lt;&lt;) 运算实现： tmp &lt;&lt; 1 内层循环用来将tmp不断逼近tmp_dividend，当tmp_dividend-tmp&gt;=0时，说明tmp的移位操作还没超过tmp_dividend，并且将tmp_dividend更新为当前的被除数tmp_dividend与tmp的差； 变量res初始化为1，那么每当循环执行了一次之后，相应的，res &lt;&lt; 1（除数左移1次，res也左移一次） 如果左移一位的除数过大，则退出内层循环，除数tmp还原为一开始的tmp_divisor 外层循环中，当tmp_dividend &gt;= tmp_divisor，说明当前的被除数tmp_dividend仍包含至少一个除数tmp_divisor，可以继续 比如：7 / 3，3 &lt;&lt; 1之后为6，res &lt;&lt; 1为2，相当于此时减去的是两个3 因此总结起来就是两层while循环，内层循环用来试探不断逼近tmp_dividend，当用来试探的tmp超过了tmp_dividend时，退出内层循环，当前被除数重新赋值为一开始的tmp_divisor 代码 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849long long add(long long a, long long b)&#123; long long sum = a; long long carry = b; while (carry) &#123; long long tmps = sum; sum = tmps ^ carry; carry = (tmps &amp; carry) &lt;&lt; 1; &#125; return sum;&#125;int divide(int dividend, int divisor) &#123; // 取绝对值 long long tmp_dividend = dividend &lt; 0 ? add(~dividend, 1) : dividend; long long tmp_divisor = divisor &lt; 0 ? add(~divisor, 1) : divisor; long long res = 0; while (tmp_dividend &gt;= tmp_divisor)&#123; long long tmp = tmp_divisor; int i = 1; while (tmp_dividend - tmp &gt;= 0)&#123; tmp_dividend = tmp_dividend - tmp; res += i; i = i &lt;&lt; 1; tmp = tmp &lt;&lt; 1; &#125; &#125; // 如果商小于0，返回res的相反数 if ((dividend ^ divisor) &lt; 0) &#123; res = add(~res, 1); &#125; res = res &gt; INT_MIN ? res : INT_MIN; return res &lt; INT_MAX ? res : INT_MAX;&#125;]]></content>
