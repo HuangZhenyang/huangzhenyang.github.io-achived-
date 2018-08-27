@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Huangzhy&#39;s Blog">
 <meta property="og:description" content="题目描述 https://leetcode-cn.com/problems/sum-of-two-integers/description/ 不使用运算符 + 和-，计算两整数a、b之和。 示例： 若 a = 1 ，b = 2，返回 3。  思路 这里以a=3, b=2为例子，通过位运算实现两数之和   可以通过异或^得到每一位上、没有加上进位的和： 0011 0010 结果为：0001  -&amp;g">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-25T09:16:06.340Z">
+<meta property="og:updated_time" content="2018-08-27T06:19:07.910Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 371 两整数之和">
 <meta name="twitter:description" content="题目描述 https://leetcode-cn.com/problems/sum-of-two-integers/description/ 不使用运算符 + 和-，计算两整数a、b之和。 示例： 若 a = 1 ，b = 2，返回 3。  思路 这里以a=3, b=2为例子，通过位运算实现两数之和   可以通过异或^得到每一位上、没有加上进位的和： 0011 0010 结果为：0001  -&amp;g">
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-25T17:16:06+08:00">
-                2018-08-25
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-27T14:19:07+08:00">
+                2018-08-27
               </time>
             
           </span>
@@ -415,15 +415,15 @@
 <p>这里以<code>a=3, b=2</code>为例子，通过位运算实现两数之和</p>
 <ol>
 <li>
-<p>可以通过异或<code>^</code>得到每一位上、没有加上进位的和：
-0011
-0010
+<p>可以通过异或<code>^</code>得到每一位上、没有加上进位的和：<br>
+0011<br>
+0010<br>
 结果为：0001  -&gt; 没有加上进位的和</p>
 </li>
 <li>
-<p>可以通过<code>&amp;</code>，再左移一位（第零位的进位输入为0），得到每一位上的进位
-0011
-0010
+<p>可以通过<code>&amp;</code>，再左移一位（第零位的进位输入为0），得到每一位上的进位<br>
+0011<br>
+0010<br>
 结果为：0010  -&gt;每一位上的进位</p>
 </li>
 <li>
