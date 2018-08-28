@@ -91,7 +91,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%9B%BE1.png">
 <meta property="og:image" content="http://yoursite.com/images/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%9B%BE2.png">
-<meta property="og:updated_time" content="2018-08-28T07:01:07.494Z">
+<meta property="og:updated_time" content="2018-08-28T07:47:20.569Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动态规划学习笔记">
 <meta name="twitter:description" content="介绍  动态规划（英语：Dynamic programming，简称DP），是一种通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。 动态规划常常适用于有重叠子问题和最优子结构性质的问题  引入 先来看斐波那契数列的例子： 1 1 2 3 5 8 13 21 …… 递推式为： $$ fib(n) = \begin{cases} 1, n=1 \quad or \quad n=2 \\ f">
@@ -347,7 +347,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-28T15:01:07+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-28T15:47:20+08:00">
                 2018-08-28
               </time>
             
@@ -432,7 +432,7 @@ $$</p>
 <strong>最优子结构</strong>：问题的最优解由相关子问题的最优解组合而成<br>
 <strong>边界</strong>：问题的边界、得到有限的结果（终止条件、初值……）<br>
 <strong>状态转移方程</strong>：问题的每一个阶段和下一阶段的关系</p>
-<p>问题中的状态要满足：</p>
+<p><strong>问题中的状态要满足</strong>：</p>
 <ol>
 <li>最优性原理：子问题必须是最优的</li>
 <li>无后效性：以前的状态及其变化过程不会影响到将来的变化</li>
@@ -617,7 +617,8 @@ int main(){
 
 </code></pre>
 <h4 id="优化"><strong>优化</strong></h4>
-<p>对于 i 只和  i-1 有关的，可以用 <code>滚动数组</code>  进行优化</p>
+<p>对于 i 只和  i-1 有关的，我们用到的是连续的解，前面的解往往可以舍去，因此可以用 <code>滚动数组</code>  进行优化
+$$ dp[j] = max( dp[j], dp[j-W{_i}] + V{_i}) , 其中 j: W \rightarrow 0 $$</p>
 <hr>
 <h2 id="后记"><strong>后记</strong></h2>
 <p>感觉动态规划在保研机试还有公司的机试中都会遇到，我之前一直没搞懂，通过问舍友和上网看讲解视频自己摸索着。</p>
