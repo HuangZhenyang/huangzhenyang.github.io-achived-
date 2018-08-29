@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-08-28T07:47:20.569Z</updated>
+  <updated>2018-08-29T06:47:19.849Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>动态规划学习笔记</title>
-    <link href="http://yoursite.com/2018/08/27/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>http://yoursite.com/2018/08/27/动态规划学习笔记/</id>
-    <published>2018-08-27T03:31:36.000Z</published>
-    <updated>2018-08-28T07:47:20.569Z</updated>
+    <title>动态规划学习笔记（二）01背包</title>
+    <link href="http://yoursite.com/2018/08/29/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%8901%E8%83%8C%E5%8C%85/"/>
+    <id>http://yoursite.com/2018/08/29/动态规划学习笔记（二）01背包/</id>
+    <published>2018-08-29T01:41:03.000Z</published>
+    <updated>2018-08-29T06:47:19.849Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;01背包&quot;&gt;&lt;strong&gt;01背包&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 id=&quot;题目描述&quot;&gt;&lt;strong&gt;题目描述&lt;/strong&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;N件物品，容量为W的背包，第 i 件物品的重量为 W&lt;sub&gt;i&lt;/sub&gt;，价值是
+      
+    
+    </summary>
+    
+      <category term="数据结构与算法" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="数据结构与算法" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>动态规划学习笔记（一）引言</title>
+    <link href="http://yoursite.com/2018/08/29/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E5%BC%95%E8%A8%80/"/>
+    <id>http://yoursite.com/2018/08/29/动态规划学习笔记（一）引言/</id>
+    <published>2018-08-29T01:26:42.000Z</published>
+    <updated>2018-08-29T01:43:49.162Z</updated>
     
     <summary type="html">
     
@@ -216,7 +242,7 @@
     <link href="http://yoursite.com/2018/08/14/LeetCode-3-%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/"/>
     <id>http://yoursite.com/2018/08/14/LeetCode-3-无重复字符的最长子串/</id>
     <published>2018-08-14T12:17:21.000Z</published>
-    <updated>2018-08-15T01:52:10.647Z</updated>
+    <updated>2018-08-29T05:30:50.934Z</updated>
     
     <summary type="html">
     

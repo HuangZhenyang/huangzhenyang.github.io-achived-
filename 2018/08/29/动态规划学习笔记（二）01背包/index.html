@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode," />
+  <meta name="keywords" content="数据结构与算法," />
 
 
 
@@ -81,21 +81,22 @@
 
 
 
-<meta name="description" content="题目描述   思路 理解  木桶效应：一只木桶能盛多少水，并不取决于最长的那块木板，而是取决于最短的那块木板 显然，这道题也是如此：   我们需要选择两块相对长度较长的木板（纵坐标的大小）：height[i], height[j]，同时两块木板的间隔也要足够大j-i，则此时能装的水为：min(height[i], height[j]) * (j - i) 思路 我们需要一个变量max_area来保">
-<meta name="keywords" content="LeetCode">
+<meta name="description" content="01背包 题目描述  N件物品，容量为W的背包，第 i 件物品的重量为 Wi，价值是 Vi，求该背包能装的最大价值 N=4, W=5,  思路 01背包，每种物品只有一个，并且只有选或者不选两种情况，而且只能选一次 dp[i][j] 表示前 i 件物品，背包容量为 j 的最大价值 则对于物品 i 有两种情况： $$ \begin{cases} 不选该物品 i，此时问题转化为 前 i-1 件物品，容">
+<meta name="keywords" content="数据结构与算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 11 盛最多水的容器">
-<meta property="og:url" content="http://yoursite.com/2018/08/16/LeetCode-11-盛最多水的容器/index.html">
+<meta property="og:title" content="动态规划学习笔记（二）01背包">
+<meta property="og:url" content="http://yoursite.com/2018/08/29/动态规划学习笔记（二）01背包/index.html">
 <meta property="og:site_name" content="Huangzhy&#39;s Blog">
-<meta property="og:description" content="题目描述   思路 理解  木桶效应：一只木桶能盛多少水，并不取决于最长的那块木板，而是取决于最短的那块木板 显然，这道题也是如此：   我们需要选择两块相对长度较长的木板（纵坐标的大小）：height[i], height[j]，同时两块木板的间隔也要足够大j-i，则此时能装的水为：min(height[i], height[j]) * (j - i) 思路 我们需要一个变量max_area来保">
+<meta property="og:description" content="01背包 题目描述  N件物品，容量为W的背包，第 i 件物品的重量为 Wi，价值是 Vi，求该背包能装的最大价值 N=4, W=5,  思路 01背包，每种物品只有一个，并且只有选或者不选两种情况，而且只能选一次 dp[i][j] 表示前 i 件物品，背包容量为 j 的最大价值 则对于物品 i 有两种情况： $$ \begin{cases} 不选该物品 i，此时问题转化为 前 i-1 件物品，容">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/LeetCode-11-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/%E5%9B%BE1.png">
-<meta property="og:image" content="http://yoursite.com/images/LeetCode-11-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/%E5%9B%BE2.png">
-<meta property="og:updated_time" content="2018-08-16T10:49:01.454Z">
+<meta property="og:image" content="http://yoursite.com/images/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%8901%E8%83%8C%E5%8C%85/%E5%9B%BE1.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%8901%E8%83%8C%E5%8C%85/%E5%9B%BE2.png">
+<meta property="og:image" content="http://yoursite.com/images/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%8901%E8%83%8C%E5%8C%85/%E5%9B%BE2.png">
+<meta property="og:updated_time" content="2018-08-29T06:47:19.849Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode 11 盛最多水的容器">
-<meta name="twitter:description" content="题目描述   思路 理解  木桶效应：一只木桶能盛多少水，并不取决于最长的那块木板，而是取决于最短的那块木板 显然，这道题也是如此：   我们需要选择两块相对长度较长的木板（纵坐标的大小）：height[i], height[j]，同时两块木板的间隔也要足够大j-i，则此时能装的水为：min(height[i], height[j]) * (j - i) 思路 我们需要一个变量max_area来保">
-<meta name="twitter:image" content="http://yoursite.com/images/LeetCode-11-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/%E5%9B%BE1.png">
+<meta name="twitter:title" content="动态规划学习笔记（二）01背包">
+<meta name="twitter:description" content="01背包 题目描述  N件物品，容量为W的背包，第 i 件物品的重量为 Wi，价值是 Vi，求该背包能装的最大价值 N=4, W=5,  思路 01背包，每种物品只有一个，并且只有选或者不选两种情况，而且只能选一次 dp[i][j] 表示前 i 件物品，背包容量为 j 的最大价值 则对于物品 i 有两种情况： $$ \begin{cases} 不选该物品 i，此时问题转化为 前 i-1 件物品，容">
+<meta name="twitter:image" content="http://yoursite.com/images/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%8901%E8%83%8C%E5%8C%85/%E5%9B%BE1.png">
 
 
 
@@ -125,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/16/LeetCode-11-盛最多水的容器/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/29/动态规划学习笔记（二）01背包/"/>
 
 
 
 
 
-  <title>LeetCode 11 盛最多水的容器 | Huangzhy's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>动态规划学习笔记（二）01背包 | Huangzhy's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -302,7 +303,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/16/LeetCode-11-盛最多水的容器/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/29/动态规划学习笔记（二）01背包/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huang Zhenyang">
@@ -319,7 +320,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode 11 盛最多水的容器</h1>
+          <h1 class="post-title" itemprop="name headline">动态规划学习笔记（二）01背包</h1>
         
 
         <div class="post-meta">
@@ -331,8 +332,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-16T18:46:36+08:00">
-                2018-08-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-29T09:41:03+08:00">
+                2018-08-29
               </time>
             
 
@@ -347,8 +348,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-16T18:49:01+08:00">
-                2018-08-16
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-29T14:47:19+08:00">
+                2018-08-29
               </time>
             
           </span>
@@ -408,22 +409,142 @@
       
 
       
-        <h2 id="题目描述"><strong>题目描述</strong></h2>
-<p><img src="/images/LeetCode-11-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/%E5%9B%BE1.png" alt="打个马赛克都是爱你的形状"></p>
-<hr>
-<h2 id="思路"><strong>思路</strong></h2>
-<h3 id="理解"><strong>理解</strong></h3>
+        <h2 id="01背包"><strong>01背包</strong></h2>
+<h3 id="题目描述"><strong>题目描述</strong></h3>
 <blockquote>
-<p>木桶效应：一只木桶能盛多少水，并不取决于最长的那块木板，而是取决于最短的那块木板
-显然，这道题也是如此：
-<img src="/images/LeetCode-11-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/%E5%9B%BE2.png" alt="打个马赛克都是爱你的形状"></p>
+<p>N件物品，容量为W的背包，第 i 件物品的重量为 W<sub>i</sub>，价值是 V<sub>i</sub>，求该背包能装的最大价值<br>
+N=4, W=5,</p>
 </blockquote>
-<p>我们需要选择两块相对长度较长的木板（纵坐标的大小）：<code>height[i], height[j]</code>，同时两块木板的间隔也要足够大<code>j-i</code>，则此时能装的水为：<code>min(height[i], height[j]) * (j - i)</code></p>
-<h3 id="思路-v2"><strong>思路</strong></h3>
-<p>我们需要一个变量<code>max_area</code>来保存能装的水体积最大值，用两个指针（下标<code>i</code>和<code>j</code>）分别遍历</p>
-<hr>
-<h2 id="代码"><strong>代码</strong></h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getArea</span><span class="params">(<span class="keyword">int</span> i_val, <span class="keyword">int</span> j_val, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> min(i_val, j_val) * (j - i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; height)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> height_sz = height.size();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> max_area = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; height_sz<span class="number">-1</span>; i++)&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; height_sz; j++)&#123;</span><br><span class="line">			<span class="keyword">int</span> curr_area = getArea(height[i], height[j], i, j);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (curr_area &gt; max_area)&#123;</span><br><span class="line">				max_area = curr_area;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> max_area;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路"><strong>思路</strong></h4>
+<p>01背包，每种物品<strong>只有一个</strong>，并且<strong>只有选或者不选两种情况</strong>，而且只能<strong>选一次</strong></p>
+<p>dp[i][j] 表示前 i 件物品，背包容量为 j 的最大价值<br>
+则对于物品 i 有两种情况：<br>
+$$
+\begin{cases}
+不选该物品 i，此时问题转化为 前 i-1 件物品，容量为 j 的背包的最大价值  \\
+选该物品 i，此时问题转化为 前 i-1 件物品，容量为 j-w[i] 的背包的最大价值 （因为已经选了物品 i ，相应的减去它的重量）
+\end{cases}
+$$</p>
+<p>也就是说，物品 i 的策略是根据之前的子问题递推而来：</p>
+<p>$$
+dp[0][j] = 0 , i=0<br>
+$$</p>
+<p>$$
+dp[i][j] =
+\begin{cases}
+	没法选： dp[i-1][j],  j&lt;W{_i} \\
+	max
+	\begin{cases}
+	不选： dp[i-1][j] \\
+	选：   dp[i-1][j-W{_i}]+V{_i}<br>
+	\end{cases}
+\end{cases}
+$$</p>
+<p>设取到第 i 件物品时，容量为 j 的最大价值为下表中的值（i 范围：[0，N-1] ， j 范围：[0，W] ）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">W</th>
+<th style="text-align:center">V</th>
+<th style="text-align:center">i \ j</th>
+<th style="text-align:center">0</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">7</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>
+<p>初始时：题目中只有4个物品，但是对于第1个物品，需要第0个物品的最优解，所以初始化 i=0的情况，并且i=0这个物品并不存在，价值总和至少为0，所以都初始化为0<br>
+对于 j=0 这一列，如果不选的话就是 dp[i-1][j]为0， 选的话由于j=0 &lt; W<sub>i</sub>，没法选，所以这一列都为0；</p>
+</li>
+<li>
+<p>填表的方法：</p>
+<ul>
+<li>从上往下，正着来，比如：
+$$dp[3][4] = max(dp[2][4]\rightarrow 不选物品i, dp[2][1] + 4\rightarrow选物品i) $$</li>
+</ul>
+<p><img src="/images/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%8901%E8%83%8C%E5%8C%85/%E5%9B%BE1.png" alt="打个马赛克都是爱你的形状"></p>
+<ul>
+<li>如果遇到：
+$$j &lt; W{_i} $$
+则说明当前的物品 i 的重量大于当前的背包的容量，不能选；</li>
+</ul>
+</li>
+</ol>
+<h3 id="代码"><strong>代码</strong></h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> N, <span class="keyword">int</span> W, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; w, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span>** dp = <span class="keyword">new</span> <span class="keyword">int</span>*[N + <span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N + <span class="number">1</span>; i++)&#123;</span><br><span class="line">		dp[i] = <span class="keyword">new</span> <span class="keyword">int</span>[W + <span class="number">1</span>];</span><br><span class="line">		<span class="built_in">memset</span>(dp[i], <span class="number">0</span>, (W+<span class="number">1</span>)*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));   <span class="comment">//初始化二维数组中的某一维</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++)&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= W; j++)&#123;</span><br><span class="line">			<span class="keyword">if</span> (j &lt; w[i])&#123;</span><br><span class="line">				dp[i][j] = dp[i - <span class="number">1</span>][j]; <span class="comment">// 没法选</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="comment">//	   max(    不选    ,       选    )</span></span><br><span class="line">				dp[i][j] = max(dp[i - <span class="number">1</span>][j], dp[i - <span class="number">1</span>][j - w[i]] + v[i]);  </span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dp[N][W]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> N = <span class="number">4</span>; <span class="comment">// N件物品</span></span><br><span class="line">	<span class="keyword">int</span> W = <span class="number">5</span>; <span class="comment">// 背包的容量为W</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> w_arr[<span class="number">4</span>] = &#123;<span class="number">2</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>&#125;;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; w(w_arr, w_arr + <span class="number">4</span>);</span><br><span class="line">	w.insert(w.begin(), <span class="number">0</span>); <span class="comment">// solve函数中，i初始为1，在开头插入0，保证w_arr的元素能被正确的遍历 </span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> v_arr[<span class="number">4</span>] = &#123;<span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">2</span>&#125;;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(v_arr, v_arr + <span class="number">4</span>);</span><br><span class="line">	v.insert(v.begin(), <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">	solve(N, W, w, v);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="优化"><strong>优化</strong></h3>
+<p>对于 i 只和  i-1 有关的，我们用到的是连续的解，前面的解往往可以舍去，因此可以用 <code>滚动数组</code>  进行优化 （注意这里 j 的范围.）
+$$ dp[j] = max( dp[j], dp[j-W{_i}] + V{_i}) , 其中 j: W \rightarrow 0 $$</p>
+<p>j 范围从 W → 0的原因是可以保证在判断物品 i 时，子问题的状态没有变化：</p>
+<p>当 j 从 0 → W时：<br>
+注意到当 j = 4时，由于之前的子问题的状态已经改变，所以得到了错误的结果<br>
+<img src="/images/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%8901%E8%83%8C%E5%8C%85/%E5%9B%BE2.png" alt="打个马赛克都是爱你的形状"></p>
+<p>然而，当 j 从 W → 0时：<br>
+<img src="/images/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%8901%E8%83%8C%E5%8C%85/%E5%9B%BE2.png" alt="打个马赛克都是爱你的形状"></p>
+<h4 id="代码-v2"><strong>代码</strong></h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> N, <span class="keyword">int</span> W, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; w, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span>* dp = <span class="keyword">new</span> <span class="keyword">int</span>[W + <span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= W; i++)&#123;</span><br><span class="line">		dp[i] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++)&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = W; j &gt;= <span class="number">0</span>; j--)&#123;</span><br><span class="line">			<span class="keyword">if</span> (j &lt; w[i])&#123;</span><br><span class="line">				dp[j] = dp[j];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				dp[j] = max(dp[j], dp[j - w[i]] + v[i]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dp[W]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -465,7 +586,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+            <a href="/tags/数据结构与算法/" rel="tag"># 数据结构与算法</a>
           
         </div>
       
@@ -478,8 +599,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/16/LeetCode-6-Z字形变换/" rel="next" title="LeetCode 6 Z字形变换">
-                <i class="fa fa-chevron-left"></i> LeetCode 6 Z字形变换
+              <a href="/2018/08/29/动态规划学习笔记（一）引言/" rel="next" title="动态规划学习笔记（一）引言">
+                <i class="fa fa-chevron-left"></i> 动态规划学习笔记（一）引言
               </a>
             
           </div>
@@ -487,10 +608,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/17/LeetCode-15-三数之和/" rel="prev" title="LeetCode 15 三数之和">
-                LeetCode 15 三数之和 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -666,7 +783,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#理解"><span class="nav-number">2.1.</span> <span class="nav-text">理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-v2"><span class="nav-number">2.2.</span> <span class="nav-text">思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#01背包"><span class="nav-number">1.</span> <span class="nav-text">01背包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.1.1.</span> <span class="nav-text">思路</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.2.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化"><span class="nav-number">1.3.</span> <span class="nav-text">优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码-v2"><span class="nav-number">1.3.1.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

@@ -89,13 +89,13 @@
 <meta property="og:site_name" content="Huangzhy&#39;s Blog">
 <meta property="og:description" content="题目描述  给定一个字符串，找出不含有重复字符的最长子串的长度。 示例： 给定 &amp;quot;abcabcbb&amp;quot; ，没有重复字符的最长子串是 &amp;quot;abc&amp;quot; ，那么长度就是3。 给定 &amp;quot;bbbbb&amp;quot; ，最长的子串就是 &amp;quot;b&amp;quot; ，长度是1。 给定 &amp;quot;pwwkew&amp;quot; ，最长子串是 &amp;quot;wke&amp;quot; ，长度">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://img-blog.csdn.net/20180814094511701?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MDU2Mjky/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:image" content="https://img-blog.csdn.net/20180814100939684?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MDU2Mjky/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:updated_time" content="2018-08-15T01:52:10.647Z">
+<meta property="og:image" content="http://yoursite.com/images/LeetCode-3-%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/%E5%9B%BE1.png">
+<meta property="og:image" content="http://yoursite.com/images/LeetCode-3-%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/%E5%9B%BE2.png">
+<meta property="og:updated_time" content="2018-08-29T05:30:50.934Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 3.无重复字符的最长子串">
 <meta name="twitter:description" content="题目描述  给定一个字符串，找出不含有重复字符的最长子串的长度。 示例： 给定 &amp;quot;abcabcbb&amp;quot; ，没有重复字符的最长子串是 &amp;quot;abc&amp;quot; ，那么长度就是3。 给定 &amp;quot;bbbbb&amp;quot; ，最长的子串就是 &amp;quot;b&amp;quot; ，长度是1。 给定 &amp;quot;pwwkew&amp;quot; ，最长子串是 &amp;quot;wke&amp;quot; ，长度">
-<meta name="twitter:image" content="https://img-blog.csdn.net/20180814094511701?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MDU2Mjky/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta name="twitter:image" content="http://yoursite.com/images/LeetCode-3-%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/%E5%9B%BE1.png">
 
 
 
@@ -347,8 +347,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-15T09:52:10+08:00">
-                2018-08-15
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-29T13:30:50+08:00">
+                2018-08-29
               </time>
             
           </span>
@@ -427,7 +427,7 @@
 而且这样做有一个问题，就是会增加冗余的判断：比如<code>abca</code>已经判断是含有重复字符的子串了，那么其实没必要再去对后续的包含该重复子串<code>abca</code>的子串如：<code>abcab</code>等进行判断。</p>
 <h3 id="思路2"><strong>思路2</strong></h3>
 <p>如下图所示，当我们遍历到的子串含有重复字符的时候，可以跳出内层循环，进入下一个起始的下标：
-<img src="https://img-blog.csdn.net/20180814094511701?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MDU2Mjky/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">
+<img src="/images/LeetCode-3-%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/%E5%9B%BE1.png" alt="打个马赛克都是爱你的形状">
 代码如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (s == <span class="string">""</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> s_sz = s.size(); <span class="comment">// 字符串长度</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> max_len = <span class="number">1</span>; <span class="comment">// 最小值为1，空串为0</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s_sz; i++)&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; s_sz; j++)&#123;</span><br><span class="line">			<span class="built_in">string</span> tmp_s = s.substr(i, j-i+<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">bool</span> dup = checkDuplicate(tmp_s); <span class="comment">// 检查该子串是否有重复的字符</span></span><br><span class="line">			<span class="keyword">if</span> (dup)&#123; <span class="comment">// 如果有重复，那就进入外层循环的下一个</span></span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">int</span> tmp_s_len = tmp_s.size();</span><br><span class="line">				max_len = tmp_s_len &gt; max_len ? tmp_s_len : max_len;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> max_len;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="存在的问题1"><strong>存在的问题1</strong></h4>
@@ -440,7 +440,7 @@
 <h4 id="存在的问题2"><strong>存在的问题2</strong></h4>
 <p>改完上面的问题，还是会超时，这时我就想，会不会是寻找子串的过程还是有多余的地方。想了想果然是！
 比如，对于输入字符串<code>abcabcbh</code>， 当我<code>max_len</code>为3的时候，那么其实我并不需要去查看 子串起始字符下标为 5，6的子串情况的，因为就算字符起始下标为5，那么<code>cbh</code>这个子串长度为3，即就算这个子串不含重复字符，最好的情况也就只是3：
-<img src="https://img-blog.csdn.net/20180814100939684?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MDU2Mjky/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<img src="/images/LeetCode-3-%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/%E5%9B%BE2.png" alt="打个马赛克都是爱你的形状"></p>
 <h4 id="改进-v2"><strong>改进</strong></h4>
 <p>在子串起始的遍历的循环中，加入一个判断<code>max_len</code>是否 ≥ <code>s_sz - i</code>的判断，如果是则直接退出循环返回'max_len'即可</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">for (int i = 0; i &lt; s_sz; i++)&#123;</span><br><span class="line"></span><br><span class="line">		if (max_len &gt;= (s_sz - i))</span><br><span class="line">			break;</span><br><span class="line"></span><br><span class="line">		for (int j = i + 1; j &lt; s_sz; j++)&#123;</span><br><span class="line">			string tmp_s = s.substr(i, j-i+1);</span><br><span class="line"></span><br><span class="line">			bool dup = checkDuplicate(tmp_s);</span><br><span class="line"></span><br><span class="line">		……</span><br></pre></td></tr></table></figure>
@@ -599,7 +599,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
