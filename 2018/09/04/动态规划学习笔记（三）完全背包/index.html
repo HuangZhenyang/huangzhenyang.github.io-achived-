@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="数据结构与算法," />
 
 
 
@@ -81,16 +81,18 @@
 
 
 
-<meta name="description" content="There&apos;s a phrase in Buddhism, &apos;Beginner&apos;s mind.&apos; It&apos;s wonderful to have a beginner&apos;s mind">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Huangzhy&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/数据结构与算法/index.html">
+<meta name="description" content="完全背包 题目描述  $N$件物品，容量为$W$的背包。第$i$件物品重量为$W{_i}$，价值是$V{_i}$，每件物品有无数个。求装的最大价值。  思路 完全背包问题，每种物品数量为无数个，也就是每个物品不再是 取 或者 不取两种情况，而是可以取0，1，2，3…… $W \over W{_i}$（该物品可能可以取到的最大值）个 用 $dp[i][j]$表示前 $i$ 种物品放入容量为 $j$">
+<meta name="keywords" content="数据结构与算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态规划学习笔记（三）完全背包">
+<meta property="og:url" content="http://yoursite.com/2018/09/04/动态规划学习笔记（三）完全背包/index.html">
 <meta property="og:site_name" content="Huangzhy&#39;s Blog">
-<meta property="og:description" content="There&apos;s a phrase in Buddhism, &apos;Beginner&apos;s mind.&apos; It&apos;s wonderful to have a beginner&apos;s mind">
+<meta property="og:description" content="完全背包 题目描述  $N$件物品，容量为$W$的背包。第$i$件物品重量为$W{_i}$，价值是$V{_i}$，每件物品有无数个。求装的最大价值。  思路 完全背包问题，每种物品数量为无数个，也就是每个物品不再是 取 或者 不取两种情况，而是可以取0，1，2，3…… $W \over W{_i}$（该物品可能可以取到的最大值）个 用 $dp[i][j]$表示前 $i$ 种物品放入容量为 $j$">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-04T02:37:37.364Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Huangzhy&#39;s Blog">
-<meta name="twitter:description" content="There&apos;s a phrase in Buddhism, &apos;Beginner&apos;s mind.&apos; It&apos;s wonderful to have a beginner&apos;s mind">
+<meta name="twitter:title" content="动态规划学习笔记（三）完全背包">
+<meta name="twitter:description" content="完全背包 题目描述  $N$件物品，容量为$W$的背包。第$i$件物品重量为$W{_i}$，价值是$V{_i}$，每件物品有无数个。求装的最大价值。  思路 完全背包问题，每种物品数量为无数个，也就是每个物品不再是 取 或者 不取两种情况，而是可以取0，1，2，3…… $W \over W{_i}$（该物品可能可以取到的最大值）个 用 $dp[i][j]$表示前 $i$ 种物品放入容量为 $j$">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/数据结构与算法/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/04/动态规划学习笔记（三）完全背包/"/>
 
 
 
 
 
-  <title>标签: 数据结构与算法 | Huangzhy's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>动态规划学习笔记（三）完全背包 | Huangzhy's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -145,7 +147,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -283,110 +285,226 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>数据结构与算法<small>标签</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/04/动态规划学习笔记（三）完全背包/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Huang Zhenyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/vox.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huangzhy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/09/04/动态规划学习笔记（三）完全背包/" itemprop="url">
-              
-                <span itemprop="name">动态规划学习笔记（三）完全背包</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">动态规划学习笔记（三）完全背包</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-04T08:31:24+08:00"
-              content="2018-09-04" >
-          09-04
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-04T08:31:24+08:00">
+                2018-09-04
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-09-04T10:37:37+08:00">
+                2018-09-04
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/08/29/动态规划学习笔记（二）01背包/" itemprop="url">
-              
-                <span itemprop="name">动态规划学习笔记（二）01背包</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-29T09:41:03+08:00"
-              content="2018-08-29" >
-          08-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/08/29/动态规划学习笔记（一）引言/" itemprop="url">
-              
-                <span itemprop="name">动态规划学习笔记（一）引言</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-29T09:26:42+08:00"
-              content="2018-08-29" >
-          08-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h2 id="完全背包"><strong>完全背包</strong></h2>
+<h3 id="题目描述"><strong>题目描述</strong></h3>
+<blockquote>
+<p>$N$件物品，容量为$W$的背包。第$i$件物品重量为$W{_i}$，价值是$V{_i}$，每件物品有无数个。求装的最大价值。</p>
+</blockquote>
+<h4 id="思路"><strong>思路</strong></h4>
+<p>完全背包问题，<strong>每种物品数量为无数个</strong>，也就是每个物品不再是 <code>取</code> 或者 <code>不取</code>两种情况，而是可以取0，1，2，3…… $W \over W{_i}$（该物品可能可以取到的最大值）个</p>
+<p>用 $dp[i][j]$表示前 $i$ 种物品放入容量为 $j$ 的背包的最大价值。用 $k$ 表示当前容量可以装下第 $i$ 种物品的数量，则 $k$范围应该是 $0 \leq k \leq \frac{W}{ W{k_i} }$ ， 这里 $W$ 为当前的背包容量，也就是$j$<br>
+如果不选当前的这种物品 $i$，则最大价值应该是之前的 $i-1$ 个物品在当前空间大小 $j$的最大价值； 如果选了该物品，则最大价值是之前的 $i-1$ 个物品，在当前背包容量 $j$ 减去物品 $i$ 取 $k=0,1,2,……$的重量，加上物品 $i$ 的价值<br>
+则状态转移方程为：
+$$ dp[i][j] = max
+\begin{cases}
+dp[i-1][j], \\
+dp[i-1][j-k \times W{_i}] + V{_i}, \quad  0 \leq k \leq \frac{W}{ W{k_i} }
+\end{cases}
+$$</p>
+<p>占坑  ༼⍨༽༼∵༽༼ ͒ ͓ ͒༽༼ ͒ ̶ ͒༽༼⍢༽༼⍤༽</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate me ! 打赏一下呗~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Huang Zhenyang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构与算法/" rel="tag"># 数据结构与算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/29/动态规划学习笔记（二）01背包/" rel="next" title="动态规划学习笔记（二）01背包">
+                <i class="fa fa-chevron-left"></i> 动态规划学习笔记（二）01背包
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -394,6 +512,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODYzMi8xNTE2MA=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -414,8 +541,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -514,6 +650,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#完全背包"><span class="nav-number">1.</span> <span class="nav-text">完全背包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.1.1.</span> <span class="nav-text">思路</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -667,6 +819,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -695,6 +851,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
