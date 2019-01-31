@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-16T08:14:12.185Z</updated>
+  <updated>2019-01-31T00:23:10.110Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LaTex表格绘制的小技巧</title>
+    <link href="http://yoursite.com/2019/01/30/LaTex%E8%A1%A8%E6%A0%BC%E7%BB%98%E5%88%B6%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    <id>http://yoursite.com/2019/01/30/LaTex表格绘制的小技巧/</id>
+    <published>2019-01-30T08:32:32.000Z</published>
+    <updated>2019-01-31T00:23:10.110Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;由于毕设开题报告是用 $Word$ 写的，当时在画表格的时候由于表格太大，只能在$Excel$ 里画完再截图放进 $Word$ 中，但是显示的结果还是不尽人意。正好之前在做&lt;a href=&quot;https
+      
+    
+    </summary>
+    
+      <category term="论文写作" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/"/>
+    
+      <category term="问题" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/%E9%97%AE%E9%A2%98/"/>
+    
+      <category term="技巧" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/%E9%97%AE%E9%A2%98/%E6%8A%80%E5%B7%A7/"/>
+    
+    
+      <category term="Latex" scheme="http://yoursite.com/tags/Latex/"/>
+    
+  </entry>
   
   <entry>
     <title>互信息介绍</title>
@@ -66,11 +94,11 @@
       <category term="投资理财" scheme="http://yoursite.com/categories/%E6%8A%95%E8%B5%84%E7%90%86%E8%B4%A2/"/>
     
     
+      <category term="指数基金" scheme="http://yoursite.com/tags/%E6%8C%87%E6%95%B0%E5%9F%BA%E9%87%91/"/>
+    
       <category term="基金定投" scheme="http://yoursite.com/tags/%E5%9F%BA%E9%87%91%E5%AE%9A%E6%8A%95/"/>
     
       <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="指数基金" scheme="http://yoursite.com/tags/%E6%8C%87%E6%95%B0%E5%9F%BA%E9%87%91/"/>
     
   </entry>
   

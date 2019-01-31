@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="数据结构与算法," />
+  <meta name="keywords" content="Latex," />
 
 
 
@@ -81,20 +81,23 @@
 
 
 
-<meta name="description" content="介绍  动态规划（英语：Dynamic programming，简称DP），是一种通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。 动态规划常常适用于有重叠子问题和最优子结构性质的问题  引入 先来看斐波那契数列的例子： 1 1 2 3 5 8 13 21 …… 递推式为： $$ fib(n) = \begin{cases} 1, n=1 \quad or \quad n=2 \\ f">
-<meta name="keywords" content="数据结构与算法">
+<meta name="description" content="前言 由于毕设开题报告是用 $Word$ 写的，当时在画表格的时候由于表格太大，只能在$Excel$ 里画完再截图放进 $Word$ 中，但是显示的结果还是不尽人意。正好之前在做互信息介绍的整理时学习了 $LaTex$ 的基础。因此这次在写毕设论文前两章时就又拿 $LaTex$ 来写。 言归正传，这篇文章主要讲的是用 $LaTex$ 绘制表格时，如何合并单元格 以及 表格太大时如何处理。 合并单元">
+<meta name="keywords" content="Latex">
 <meta property="og:type" content="article">
-<meta property="og:title" content="动态规划学习笔记（一）引言">
-<meta property="og:url" content="http://yoursite.com/2018/08/29/动态规划学习笔记（一）引言/index.html">
+<meta property="og:title" content="LaTex表格绘制的小技巧">
+<meta property="og:url" content="http://yoursite.com/2019/01/30/LaTex表格绘制的小技巧/index.html">
 <meta property="og:site_name" content="Huangzhy&#39;s Blog">
-<meta property="og:description" content="介绍  动态规划（英语：Dynamic programming，简称DP），是一种通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。 动态规划常常适用于有重叠子问题和最优子结构性质的问题  引入 先来看斐波那契数列的例子： 1 1 2 3 5 8 13 21 …… 递推式为： $$ fib(n) = \begin{cases} 1, n=1 \quad or \quad n=2 \\ f">
+<meta property="og:description" content="前言 由于毕设开题报告是用 $Word$ 写的，当时在画表格的时候由于表格太大，只能在$Excel$ 里画完再截图放进 $Word$ 中，但是显示的结果还是不尽人意。正好之前在做互信息介绍的整理时学习了 $LaTex$ 的基础。因此这次在写毕设论文前两章时就又拿 $LaTex$ 来写。 言归正传，这篇文章主要讲的是用 $LaTex$ 绘制表格时，如何合并单元格 以及 表格太大时如何处理。 合并单元">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E5%BC%95%E8%A8%80/%E5%9B%BE1.png">
-<meta property="og:updated_time" content="2018-08-29T01:43:49.162Z">
+<meta property="og:image" content="http://yoursite.com/images/LaTex%E8%A1%A8%E6%A0%BC%E7%BB%98%E5%88%B6%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/demo1.jpg">
+<meta property="og:image" content="http://yoursite.com/images/LaTex%E8%A1%A8%E6%A0%BC%E7%BB%98%E5%88%B6%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/demo2.jpg">
+<meta property="og:image" content="http://yoursite.com/images/LaTex%E8%A1%A8%E6%A0%BC%E7%BB%98%E5%88%B6%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/demo3-method1.jpg">
+<meta property="og:image" content="http://yoursite.com/images/LaTex%E8%A1%A8%E6%A0%BC%E7%BB%98%E5%88%B6%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/demo3-method2.png">
+<meta property="og:updated_time" content="2019-01-31T00:23:10.110Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="动态规划学习笔记（一）引言">
-<meta name="twitter:description" content="介绍  动态规划（英语：Dynamic programming，简称DP），是一种通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。 动态规划常常适用于有重叠子问题和最优子结构性质的问题  引入 先来看斐波那契数列的例子： 1 1 2 3 5 8 13 21 …… 递推式为： $$ fib(n) = \begin{cases} 1, n=1 \quad or \quad n=2 \\ f">
-<meta name="twitter:image" content="http://yoursite.com/images/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E5%BC%95%E8%A8%80/%E5%9B%BE1.png">
+<meta name="twitter:title" content="LaTex表格绘制的小技巧">
+<meta name="twitter:description" content="前言 由于毕设开题报告是用 $Word$ 写的，当时在画表格的时候由于表格太大，只能在$Excel$ 里画完再截图放进 $Word$ 中，但是显示的结果还是不尽人意。正好之前在做互信息介绍的整理时学习了 $LaTex$ 的基础。因此这次在写毕设论文前两章时就又拿 $LaTex$ 来写。 言归正传，这篇文章主要讲的是用 $LaTex$ 绘制表格时，如何合并单元格 以及 表格太大时如何处理。 合并单元">
+<meta name="twitter:image" content="http://yoursite.com/images/LaTex%E8%A1%A8%E6%A0%BC%E7%BB%98%E5%88%B6%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/demo1.jpg">
 
 
 
@@ -124,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/29/动态规划学习笔记（一）引言/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/01/30/LaTex表格绘制的小技巧/"/>
 
 
 
 
 
-  <title>动态规划学习笔记（一）引言 | Huangzhy's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>LaTex表格绘制的小技巧 | Huangzhy's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -301,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/29/动态规划学习笔记（一）引言/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/30/LaTex表格绘制的小技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huang Zhenyang">
@@ -318,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">动态规划学习笔记（一）引言</h1>
+          <h1 class="post-title" itemprop="name headline">LaTex表格绘制的小技巧</h1>
         
 
         <div class="post-meta">
@@ -330,8 +333,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-29T09:26:42+08:00">
-                2018-08-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-30T16:32:32+08:00">
+                2019-01-30
               </time>
             
 
@@ -346,8 +349,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-29T09:43:49+08:00">
-                2018-08-29
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-31T08:23:10+08:00">
+                2019-01-31
               </time>
             
           </span>
@@ -365,8 +368,30 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构与算法/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构与算法</span>
+                  <a href="/categories/论文写作/" itemprop="url" rel="index">
+                    <span itemprop="name">论文写作</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文写作/问题/" itemprop="url" rel="index">
+                    <span itemprop="name">问题</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文写作/问题/技巧/" itemprop="url" rel="index">
+                    <span itemprop="name">技巧</span>
                   </a>
                 </span>
 
@@ -407,39 +432,94 @@
       
 
       
-        <h2 id="介绍"><strong>介绍</strong></h2>
-<blockquote>
-<p>动态规划（英语：Dynamic programming，简称DP），是一种通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。<br>
-动态规划常常适用于有重叠子问题和最优子结构性质的问题</p>
-</blockquote>
-<h3 id="引入"><strong>引入</strong></h3>
-<p>先来看斐波那契数列的例子： <code>1 1 2 3 5 8 13 21 ……</code><br>
-递推式为：<br>
-$$
-fib(n) =
-\begin{cases}
-1, n=1 \quad or \quad n=2 \\<br>
-fib(n-1) + fib(n-2) , others \\<br>
-\end{cases}
-$$</p>
-<p><img src="/images/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E5%BC%95%E8%A8%80/%E5%9B%BE1.png" alt="打个马赛克都是爱你的形状"></p>
-<p>然后会发现其实会有很多重复的地方， 如果要算 <code>fib(7) = fib(6) + fib(5)</code>,  而 <code>fib(6) = fib(5) + fib(4)</code><br>
-如果之前已经计算得到 <code>fib(5)</code> ，那么其实可以将其保存下来，以后要用到的时候直接取即可（记忆化搜索），也就是可以将重叠子问题的解保存下来，避免重复计算</p>
-<h2 id="概念"><strong>概念</strong></h2>
-<p><strong>分治</strong>：把原问题划分为互不相交的子问题，递归地求解子问题，再将它们的解组合起来<br>
-<strong>动态规划</strong>：子问题重叠的情况，不同的子问题具有公共的子子问题<br>
-<strong>最优子结构</strong>：问题的最优解由相关子问题的最优解组合而成<br>
-<strong>边界</strong>：问题的边界、得到有限的结果（终止条件、初值……）<br>
-<strong>状态转移方程</strong>：问题的每一个阶段和下一阶段的关系</p>
-<p><strong>问题中的状态要满足</strong>：</p>
+        <h2 id="前言"><strong>前言</strong></h2>
+<p>由于毕设开题报告是用 $Word$ 写的，当时在画表格的时候由于表格太大，只能在$Excel$ 里画完再截图放进 $Word$ 中，但是显示的结果还是不尽人意。正好之前在做<a href="https://huangzhenyang.github.io/2019/01/16/%E4%BA%92%E4%BF%A1%E6%81%AF%E4%BB%8B%E7%BB%8D/" target="_blank" rel="noopener">互信息介绍</a>的整理时学习了 $LaTex$ 的基础。因此这次在写毕设论文前两章时就又拿 $LaTex$ 来写。</p>
+<p>言归正传，这篇文章主要讲的是用 $LaTex$ 绘制表格时，<strong>如何合并单元格</strong> 以及 <strong>表格太大时如何处理</strong>。</p>
+<h2 id="合并单元格"><strong>合并单元格</strong></h2>
 <ol>
-<li>最优性原理：子问题必须是最优的</li>
-<li>无后效性：以前的状态及其变化过程不会影响到将来的变化</li>
+<li>引入包：</li>
 </ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\usepackage&#123;multirow&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>通过命令 <code>\multicolumn</code> 和 <code>\multirow</code> 进行合并单元格。</li>
+</ol>
+<ul>
+<li><code>\multicolumn{参数1}{参数2}{参数3}</code>
+<ul>
+<li><code>参数1</code> 表示要将整个单元格分成多少列</li>
+<li><code>参数2</code> 表示对齐方式</li>
+<li><code>参数3</code> 表示这个单元格的内容</li>
+</ul>
+</li>
+<li><code>\multirow{参数1}{参数2}{参数3}</code>
+<ul>
+<li><code>参数1</code> 表示要将整个单元格分成多少行</li>
+<li><code>参数2</code> 表示对齐方式</li>
+<li><code>参数3</code> 表示这个单元格的内容</li>
+</ul>
+</li>
+<li>示例：
+<ul>
+<li><code>\multicolumn{2}{c|}{时间序列模型}</code> 指的是这个单元格占两列。</li>
+<li><code>\multirow{2}{*}{名称}</code> 指的是这个单元格占两行（可以用来垂直居中）</li>
+<li><code>\multicolumn{2}{c|}{\multirow{2}{*}{方法}}</code> 指的是 <code>方法</code>这个内容所处的单元格占两行，同时也占两列。如果 <code>\multirow</code> 前面没有 <code>\multicolumn</code>的话，默认就是只占一列。</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li><strong>代码示例：</strong></li>
+</ol>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;table&#125;[!htbp] </span><br><span class="line">\caption&#123;demo1&#125;</span><br><span class="line">\label&#123;demo1&#125;</span><br><span class="line">\centering</span><br><span class="line">\begin&#123;tabular&#125;&#123;|c|c|c|c|c|&#125;   </span><br><span class="line">\hline</span><br><span class="line">\multirow&#123;2&#125;&#123;*&#125;&#123;多行&#125;&amp;</span><br><span class="line">\multicolumn&#123;2&#125;&#123;c|&#125;&#123;多列&#125;&amp;</span><br><span class="line">\multicolumn&#123;2&#125;&#123;c|&#125;&#123;\multirow&#123;2&#125;&#123;*&#125;&#123;多行多列&#125;&#125; \\</span><br><span class="line">\cline&#123;2-3&#125;</span><br><span class="line">  &amp; 多列1 &amp; 多列2 &amp; \multicolumn&#123;2&#125;&#123;c|&#125;&#123;&#125;  \\</span><br><span class="line">\hline</span><br><span class="line">label-1 &amp; label-2&amp;label-3 &amp; label-4&amp; label-5\\</span><br><span class="line">\hline</span><br><span class="line">\end&#123;tabular&#125;</span><br><span class="line">\end&#123;table&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>解释：</strong></p>
+<ul>
+<li><code>\begin{tabular}{|c|c|c|c|c|}</code> 中的<code>c</code>数量应该与表格中的列的数量一致，比如这里有5列</li>
+<li>表头中第三列是多行多列的情况，因此如果表头中没有子表头的话，需要用<code>\multicolumn{2}{c|}{}</code>进行占位</li>
+<li><code>\cline{2-3}</code>表示在第2列和第3列头顶画出横线，下标从1开始。</li>
+<li>多了 <code>&amp; 多列1 &amp; 多列2 &amp; \multicolumn{2}{c|}{} \\</code>是因为前面说了<code>\multirow{2}{*}{多行}</code>表示有个单元格占了两行，而<code>\multicolumn{2}{c|}{多列}</code>默认是只占一行的，因此还要用这句代码来对第二行进行填充</li>
+</ul>
+<p><strong>效果：</strong>
+<img src="/images/LaTex%E8%A1%A8%E6%A0%BC%E7%BB%98%E5%88%B6%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/demo1.jpg" alt="示例1"></p>
+<h2 id="表格内容太长"><strong>表格内容太长</strong></h2>
+<ol>
+<li>
+<p>可以使用<code>\setlength{\tabcolsep}{0.23mm}{\begin{tabular}……\end{tabular}}</code>调整表格宽度，其中 <code>0.23mm</code> 用来控制表格的宽度</p>
+</li>
+<li>
+<p><strong>代码示例</strong></p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;table&#125;[!htbp] </span><br><span class="line">\caption&#123;demo2&#125;</span><br><span class="line">\label&#123;demo2&#125;</span><br><span class="line">\centering</span><br><span class="line">\begin&#123;tabular&#125;&#123;|c|c|c|&#125;</span><br><span class="line">\hline</span><br><span class="line">我是一个很长很长很长很长很长很长很长很长的字符串 &amp; 我也是 &amp; 我也是呀 \\</span><br><span class="line">我才不是 &amp; 我也是 &amp; 你到底是是还是不是 \\</span><br><span class="line">\hline</span><br><span class="line">\end&#123;tabular&#125;</span><br><span class="line">\end&#123;table&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>效果：</strong>
+<img src="/images/LaTex%E8%A1%A8%E6%A0%BC%E7%BB%98%E5%88%B6%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/demo2.jpg" alt="示例2"></p>
+<h2 id="单元格内容太长换行"><strong>单元格内容太长换行</strong></h2>
+<p>对于单元格中，内容太长需要换行的情况，可以有两种解决方法：</p>
+<ul>
+<li>控制每一列的长度：<code>\begin{tabular}{|p{3.5cm}|p{2cm}|p{8cm}|}</code></li>
+<li>手动换行，即在两行之间不画线，不使用 <code>\hline</code>进行分割，这样看起来就像是一个单元格。</li>
+</ul>
+<h3 id="方法一：控制每一列的长度"><strong>方法一：控制每一列的长度</strong></h3>
+<p>通过<code>\begin{tabular}{|p{3.5cm}|p{2cm}|p{8cm}|}</code>控制每一列的长度，超过该长度的部分会自动换行
+<strong>代码示例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">% before</span><br><span class="line">\begin&#123;table&#125;[!htbp] \centering</span><br><span class="line">\caption&#123;demo3-method1-before&#125;</span><br><span class="line">\label&#123;demo3-method1-before&#125;</span><br><span class="line">\centering</span><br><span class="line">\begin&#123;tabular&#125;&#123;|c|c|c|&#125;</span><br><span class="line">\hline</span><br><span class="line">\textbf&#123;协议&#125; &amp; \textbf&#123;网络层次&#125; &amp; \textbf&#123;描述&#125; \\ </span><br><span class="line">\hline</span><br><span class="line">IP &amp; 网络层 &amp; IP协议是将多个包交换网络连接起来，它在源地址和目的地址之间传送一种称之为数据包的东西，它还提供对数据大小的重新组装功能，以适应不同网络对包大小的要求。IP不提供可靠的传输服务，它不提供端到端的或（路由）结点到（路由）结点的确认，对数据没有差错控制，它只使用报头的校验码，它不提供重发和流量控制。如果出错可以通过ICMP报告，ICMP在IP模块中实现。 \\</span><br><span class="line">\hline</span><br><span class="line"></span><br><span class="line">\end&#123;tabular&#125;</span><br><span class="line">\end&#123;table&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">% after</span><br><span class="line">\begin&#123;table&#125;[!htbp] \centering</span><br><span class="line">\caption&#123;demo3-method1-after&#125;</span><br><span class="line">\label&#123;demo3-method1-after&#125;</span><br><span class="line">\centering</span><br><span class="line">\begin&#123;tabular&#125;&#123;|p&#123;3.5cm&#125;|p&#123;2cm&#125;|p&#123;8cm&#125;|&#125;</span><br><span class="line">\hline</span><br><span class="line">\textbf&#123;协议&#125; &amp; \textbf&#123;网络层次&#125; &amp; \textbf&#123;描述&#125; \\ </span><br><span class="line">\hline</span><br><span class="line">IP &amp; 网络层 &amp; IP协议是将多个包交换网络连接起来，它在源地址和目的地址之间传送一种称之为数据包的东西，它还提供对数据大小的重新组装功能，以适应不同网络对包大小的要求。IP不提供可靠的传输服务，它不提供端到端的或（路由）结点到（路由）结点的确认，对数据没有差错控制，它只使用报头的校验码，它不提供重发和流量控制。如果出错可以通过ICMP报告，ICMP在IP模块中实现。 \\</span><br><span class="line">\hline</span><br></pre></td></tr></table></figure>
+<p><strong>效果：</strong>
+<img src="/images/LaTex%E8%A1%A8%E6%A0%BC%E7%BB%98%E5%88%B6%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/demo3-method1.jpg" alt="示例3"></p>
+<h3 id="方法二：手动换行"><strong>方法二：手动换行</strong></h3>
+<p>在两行之间不添加<code>\hline</code>等横线代码，手动对内容进行分行，让需要换行的内容写到下一行的代码中。</p>
+<p><strong>代码示例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">% before</span><br><span class="line">\begin&#123;table&#125;[!htbp] \centering</span><br><span class="line">\caption&#123;demo3-method1-before&#125;</span><br><span class="line">\label&#123;demo3-method1-before&#125;</span><br><span class="line">\centering</span><br><span class="line">\begin&#123;tabular&#125;&#123;|c|c|c|&#125;</span><br><span class="line">\hline</span><br><span class="line">\textbf&#123;协议&#125; &amp; \textbf&#123;网络层次&#125; &amp; \textbf&#123;描述&#125; \\ </span><br><span class="line">\hline</span><br><span class="line">IP &amp; 网络层 &amp; IP协议是将多个包交换网络连接起来，它在源地址和目的地址之间传送一种称之为数据包的东西，它还提供对数据大小的重新组装功能，以适应不同网络对包大小的要求。IP不提供可靠的传输服务，它不提供端到端的或（路由）结点到（路由）结点的确认，对数据没有差错控制，它只使用报头的校验码，它不提供重发和流量控制。如果出错可以通过ICMP报告，ICMP在IP模块中实现。 \\</span><br><span class="line">\hline</span><br><span class="line"></span><br><span class="line">\end&#123;tabular&#125;</span><br><span class="line">\end&#123;table&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">% 手动换行</span><br><span class="line">\begin&#123;table&#125;[!htbp] \centering</span><br><span class="line">\caption&#123;demo3-method1-after&#125;</span><br><span class="line">\label&#123;demo3-method1-after&#125;</span><br><span class="line">\centering</span><br><span class="line">\begin&#123;tabular&#125;&#123;|c|c|c|&#125;</span><br><span class="line">\hline</span><br><span class="line">\textbf&#123;协议&#125; &amp; \textbf&#123;网络层次&#125; &amp; \textbf&#123;描述&#125; \\</span><br><span class="line">\hline</span><br><span class="line">IP &amp; 网络层 &amp; IP协议是将多个包交换网络连接起来，\\</span><br><span class="line"> &amp;  &amp; 它在源地址和目的地址之间传送一种称之为数据包的东西，\\</span><br><span class="line"> &amp;  &amp; 它还提供对数据大小的重新组装功能，\\</span><br><span class="line">  &amp;  &amp; 以适应不同网络对包大小的要求。\\</span><br><span class="line"> &amp;  &amp; IP不提供可靠的传输服务，它不提供端到端的或（路由）结点 \\</span><br><span class="line">  &amp;  &amp; 到（路由）结点的确认，对数据没有差错控制，\\</span><br><span class="line"> &amp;  &amp; 它只使用报头的校验码，它不提供重发和流量控制。\\</span><br><span class="line">  &amp;  &amp; 如果出错可以通过ICMP报告，ICMP在IP模块中实现。 \\</span><br><span class="line">\hline</span><br><span class="line"></span><br><span class="line">\end&#123;tabular&#125;</span><br><span class="line">\end&#123;table&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">% 垂直居中</span><br><span class="line">\begin&#123;table&#125;[!htbp] \centering</span><br><span class="line">\caption&#123;demo3-method1-after-after&#125;</span><br><span class="line">\label&#123;demo3-method1-after-after&#125;</span><br><span class="line">\centering</span><br><span class="line">\begin&#123;tabular&#125;&#123;|c|c|c|&#125;</span><br><span class="line">\hline</span><br><span class="line">\textbf&#123;协议&#125; &amp; \textbf&#123;网络层次&#125; &amp; \textbf&#123;描述&#125; \\</span><br><span class="line">\hline</span><br><span class="line">\multirow&#123;8&#125;&#123;*&#125;&#123;IP&#125; &amp; \multirow&#123;8&#125;&#123;*&#125;&#123;网络层&#125; &amp; IP协议是将多个包交换网络连接起来，\\</span><br><span class="line"> &amp;  &amp; 它在源地址和目的地址之间传送一种称之为数据包的东西，\\</span><br><span class="line"> &amp;  &amp; 它还提供对数据大小的重新组装功能，\\</span><br><span class="line">  &amp;  &amp; 以适应不同网络对包大小的要求。\\</span><br><span class="line"> &amp;  &amp; IP不提供可靠的传输服务，它不提供端到端的或（路由）结点 \\</span><br><span class="line">  &amp;  &amp; 到（路由）结点的确认，对数据没有差错控制，\\</span><br><span class="line"> &amp;  &amp; 它只使用报头的校验码，它不提供重发和流量控制。\\</span><br><span class="line">  &amp;  &amp; 如果出错可以通过ICMP报告，ICMP在IP模块中实现。 \\</span><br><span class="line">\hline</span><br><span class="line"></span><br><span class="line">\end&#123;tabular&#125;</span><br><span class="line">\end&#123;table&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>解释：</strong>
+可以看到，虽然第二个示例解决了换行的问题，但是在这一行中的<code>IP</code>和<code>网络层</code>这两个内容并没有显示垂直居中，这是因为这两个单元格是在最上面的那一行。因此可以用 <code>\multirow{8}{*}{IP}</code> 表示<code>IP</code>这个内容占了8行，结果显示出来就会垂直居中，如第三个结果所示。</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li><code>\multirow{8}{*}{IP}</code>需要加在当前的要垂直居中的那一项上，而不是表头。并且，第一个参数<code>8</code>的由来是因为我将过长的内容分成了<code>8</code>行</li>
+<li>手动换行的内容，仍然需要在那一行后面加上换行的代码： <code>\\</code></li>
+</ul>
+<p><strong>效果：</strong>
+<img src="/images/LaTex%E8%A1%A8%E6%A0%BC%E7%BB%98%E5%88%B6%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/demo3-method2.png" alt="示例3"></p>
 <hr>
 <h2 id="后记"><strong>后记</strong></h2>
-<p>感觉动态规划在保研机试还有公司的机试中都会遇到，我之前一直没搞懂，通过问舍友和上网看讲解视频自己摸索着。</p>
-<p>占坑  ༼⍨༽༼∵༽༼ ͒ ͓ ͒༽༼ ͒ ̶ ͒༽༼⍢༽༼⍤༽</p>
+<p>这篇是我记录关于LaTex表格的一些代码，方便以后需要的时候拿来使用。有什么不足、错误之处还请批评指正。っﾟДﾟ)っ</p>
 
       
     </div>
@@ -481,7 +561,7 @@ $$</p>
       
         <div class="post-tags">
           
-            <a href="/tags/数据结构与算法/" rel="tag"># 数据结构与算法</a>
+            <a href="/tags/Latex/" rel="tag"># Latex</a>
           
         </div>
       
@@ -494,8 +574,8 @@ $$</p>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/25/LeetCode-371-两整数之和/" rel="next" title="LeetCode 371 两整数之和">
-                <i class="fa fa-chevron-left"></i> LeetCode 371 两整数之和
+              <a href="/2019/01/16/互信息介绍/" rel="next" title="互信息介绍">
+                <i class="fa fa-chevron-left"></i> 互信息介绍
               </a>
             
           </div>
@@ -503,10 +583,6 @@ $$</p>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/29/动态规划学习笔记（二）01背包/" rel="prev" title="动态规划学习笔记（二）01背包">
-                动态规划学习笔记（二）01背包 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -682,7 +758,7 @@ $$</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引入"><span class="nav-number">1.1.</span> <span class="nav-text">引入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">2.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并单元格"><span class="nav-number">2.</span> <span class="nav-text">合并单元格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表格内容太长"><span class="nav-number">3.</span> <span class="nav-text">表格内容太长</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单元格内容太长换行"><span class="nav-number">4.</span> <span class="nav-text">单元格内容太长换行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一：控制每一列的长度"><span class="nav-number">4.1.</span> <span class="nav-text">方法一：控制每一列的长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法二：手动换行"><span class="nav-number">4.2.</span> <span class="nav-text">方法二：手动换行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">5.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>
