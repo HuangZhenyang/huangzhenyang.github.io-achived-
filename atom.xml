@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-31T03:31:29.655Z</updated>
+  <updated>2019-02-01T12:53:43.665Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Google Scholar 导出文献的BibTex引用代码</title>
+    <link href="http://yoursite.com/2019/02/01/Google-Scholar-%E5%AF%BC%E5%87%BA%E6%96%87%E7%8C%AE%E7%9A%84BibTex%E5%BC%95%E7%94%A8%E4%BB%A3%E7%A0%81/"/>
+    <id>http://yoursite.com/2019/02/01/Google-Scholar-导出文献的BibTex引用代码/</id>
+    <published>2019-02-01T12:23:22.000Z</published>
+    <updated>2019-02-01T12:53:43.665Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;在引用文献的时候，自己写BibTex引用的代码的话很麻烦。其实只要对谷歌学术（Google Scholar ）稍加设置一下，就能导出引用文献的BibTex代码。&lt;/p&gt;
+&lt;h2 id=&quot;步骤&quot;&gt;&lt;st
+      
+    
+    </summary>
+    
+      <category term="论文写作" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/"/>
+    
+      <category term="技巧" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/%E6%8A%80%E5%B7%A7/"/>
+    
+    
+      <category term="LaTex" scheme="http://yoursite.com/tags/LaTex/"/>
+    
+  </entry>
   
   <entry>
     <title>LaTex表格绘制的小技巧</title>
@@ -94,11 +121,11 @@
       <category term="投资理财" scheme="http://yoursite.com/categories/%E6%8A%95%E8%B5%84%E7%90%86%E8%B4%A2/"/>
     
     
-      <category term="指数基金" scheme="http://yoursite.com/tags/%E6%8C%87%E6%95%B0%E5%9F%BA%E9%87%91/"/>
-    
       <category term="基金定投" scheme="http://yoursite.com/tags/%E5%9F%BA%E9%87%91%E5%AE%9A%E6%8A%95/"/>
     
       <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="指数基金" scheme="http://yoursite.com/tags/%E6%8C%87%E6%95%B0%E5%9F%BA%E9%87%91/"/>
     
   </entry>
   
