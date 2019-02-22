@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[C语言根据函数指针得到其函数名]]></title>
+    <url>%2F2019%2F02%2F22%2FC%E8%AF%AD%E8%A8%80%E6%A0%B9%E6%8D%AE%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%E5%BE%97%E5%88%B0%E5%85%B6%E5%87%BD%E6%95%B0%E5%90%8D%2F</url>
+    <content type="text"><![CDATA[前言 这次遇到的需求是需要知道函数指针指向的函数的名称是什么。感觉是不是有点儿像java里的反射，可以知道运行时的类是啥。 函数指针介绍 变量名不需要存储，是给人看的，可以参考知乎的这个回答。可以简单理解成编译器编译的时候知道每个变量所储存的地址，在编译完后会把变量替换成值的存储地址。那么，函数也是有存储地址的。 既然数据变量的内存地址可以存储在相应的指针变量中。函数指针中可以存储函数的首地址，这样就可以通过函数指针变量来调用其指向的函数了。 函数指针的示例代码 函数指针的示例代码，摘自Wikipedia： 12345678910111213141516171819202122232425262728# ifndef __cplusplus # include &lt;stdio.h&gt;# else # include &lt;cstdio&gt;# endifint max(int x, int y)&#123; return x &gt; y ? x : y;&#125;int main(void)&#123; /* p 是函数指针 */ /* 指向具有相同的参数类型，返回类型的函数 */ int (* p)(int, int) = &amp; max; // &amp;可以省略 int a, b, c, d; printf("please input 3 numbers:"); scanf("%d %d %d", &amp; a, &amp; b, &amp; c); /* 与直接调用函数等价，d = max(max(a, b), c) */ d = p(p(a, b), c); printf("the maxumum number is: %d\n", d); return 0;&#125; 代码中，函数名max是一个函数指针常量，而我们定义的函数指针p则是一个函数指针变量。 解决方法 回到我们的问题，该如何根据函数指针得到它指向的函数的名称呢？ 方法一：内核态、printk()函数 如果是在内核态中，那么可以通过printk()函数来打印出函数名。详情可以参考下网上的Blog。并且需要包含相关的头文件：#include&lt;linux/kernel.h&gt; 。 或者，如果是在用户态中，那么需要写Makefile，将内核态中的模块编译链接，可以参考下这个链接：linux/module.h: No such file or directory。这个回答里也有人提到用-I加上链接库，但是我没试成功，手动狗头。 方法二：func 在要打印的函数中嵌入以下代码： 1printf("%s", __func__); 其中，__func__ 是个标准宏，它能给出当前的函数名。 但是我觉得这样的话，因为我的文件中有很多个函数，而我只能对这些函数的代码进行入侵，添加打印的代码。可以想想有没有什么设计模式可以解决的。 方法三：创建函数指针与函数名对应的字典 创建相关的结构体作为函数地址与函数名的字典，在判断的时候进行遍历，看函数指针的地址与函数的地址是否相同，相同的话就可以返回其函数名。 缺点的话就是在创建结构体数组的时候，如果有很多函数的话就得一个一个添加。 示例代码： 1234567891011121314151617181920212223242526272829303132333435typedef void (*simple_fp)(); // 函数指针typedef struct _function_meta &#123; simple_fp func_ptr; char * func_name;&#125; function_meta; // 函数元数据的结构体，包含函数指针以及函数指针对应的函数名void f1() &#123;&#125;void f2() &#123;&#125;void f3() &#123;&#125;int main()&#123; void (*unknown_func_pointer)() = f2; // you ignore this unknown_func_pointer(); // this is all you see printf("f1 %p\n", f1); printf("f2 %p\n", f2); printf("f3 %p\n", f3); printf("unknown_func_pointer %p\n", unknown_func_pointer); struct function_meta arrfunc_ptrs[3] = &#123; &#123;f1, "f1"&#125;, &#123;f2, "f2"&#125;, &#123;f3, "f3"&#125; &#125;; // 函数元数据数组 for(int i=0; i&lt;3; i++) &#123; if( unknown_func_pointer == arrfunc_ptrs[i].func_ptr ) // 判断要判断的函数指针与函数元数据数组中每个元素的函数指针是否相同 &#123; printf("function name: %s\n", arrfunc_ptrs[i].func_name); // 是的话则可以打印出其函数名 &#125; &#125;&#125; 输出如下： 12345f1 0x40051bf2 0x400521f3 0x400527unknown_func_pointer 0x400521function name: f2]]></content>
+      <categories>
+        <category>问题</category>
+        <category>技巧</category>
+      </categories>
+      <tags>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Google Scholar 导出文献的BibTex引用代码]]></title>
     <url>%2F2019%2F02%2F01%2FGoogle-Scholar-%E5%AF%BC%E5%87%BA%E6%96%87%E7%8C%AE%E7%9A%84BibTex%E5%BC%95%E7%94%A8%E4%BB%A3%E7%A0%81%2F</url>
     <content type="text"><![CDATA[前言 在引用文献的时候，自己写BibTex引用的代码的话很麻烦。其实只要对谷歌学术（Google Scholar ）稍加设置一下，就能导出引用文献的BibTex代码。 步骤 首先，能访问Google Scholar 点击页面左上角的三条杠杠的按钮 点击设置，进入设置界面 在侧边栏搜索结果的参考书目管理软件中，勾选显示导入___的链接，并选择BibTex，点击保存： 最后，当输入文献进行搜索的时候，就能看到在每个结果的右下角都有一个导入BibTex的选项。 打开以后即可看到已经整理好的BibTex格式的引用代码，复制到LaTex中引用即可： 1\cite&#123;nasrabadi2007pattern&#125;]]></content>
@@ -44,9 +56,9 @@
         <category>投资理财</category>
       </categories>
       <tags>
+        <tag>指数基金</tag>
         <tag>基金定投</tag>
         <tag>读书笔记</tag>
-        <tag>指数基金</tag>
       </tags>
   </entry>
   <entry>
