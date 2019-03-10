@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Huangzhy&#39;s Blog">
 <meta property="og:description" content="0x00 前言 这篇文章介绍了关于在Linux下对OpenSSL进行交叉编译（arm和mips）的方法，以及踩到的一些坑。 相关知识  OpenSSL 是一个安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。 默认下载下来的OpenSSL编出来的是x86体系结构的 arm和mips是两种体系结构  环境说明  系统：Ubun">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-10T14:15:17.497Z">
+<meta property="og:updated_time" content="2019-03-10T14:18:26.853Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenSSL库的交叉编译（arm和mips）">
 <meta name="twitter:description" content="0x00 前言 这篇文章介绍了关于在Linux下对OpenSSL进行交叉编译（arm和mips）的方法，以及踩到的一些坑。 相关知识  OpenSSL 是一个安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。 默认下载下来的OpenSSL编出来的是x86体系结构的 arm和mips是两种体系结构  环境说明  系统：Ubun">
@@ -344,7 +344,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-10T22:15:17+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-10T22:18:26+08:00">
                 2019-03-10
               </time>
             
@@ -418,7 +418,8 @@
 <li>系统：Ubuntu 16.04LTS</li>
 <li>arm的交叉编译器：arm-linux-gcc-4.4.3</li>
 <li>mips的交叉编译器： mipsel-openwrt-linux</li>
-<li>OpenSSL: 1.0.1f，最后面的f只是代表了一个版本，下载链接：  <a href="https://github.com/openssl/openssl/releases/tag/OpenSSL_1_0_1f" target="_blank" rel="noopener">https://github.com/openssl/openssl/releases/tag/OpenSSL_1_0_1f</a> ，  下载完后解压，进入目录中</li>
+<li>OpenSSL: 1.0.1f，最后面的f只是代表了一个版本，下载链接：<br>
+<a href="https://github.com/openssl/openssl/releases/tag/OpenSSL_1_0_1f" target="_blank" rel="noopener">https://github.com/openssl/openssl/releases/tag/OpenSSL_1_0_1f</a> ，  下载完后解压，进入目录中</li>
 </ul>
 <h2 id="0x01-openssl在arm下的交叉编译"><strong>0x01 OpenSSL在arm下的交叉编译</strong></h2>
 <ul>
@@ -430,7 +431,7 @@
 <li>复制文件: <code>sudo cp -r /opt/FriendlyARM/toolschain/4.4.3 /usr/local/arm</code></li>
 <li>配置环境变量: <code>sudo vim /etc/bash.bashrc</code>, 在最后加上 <code>export PATH=$PATH:/opt/FriendlyARM/toolschain/4.4.3/bin</code></li>
 <li><code>source /etc/bash.bashrc</code></li>
-<li>测试是否安装成功: 终端，输入<code>arm-</code>，然后按两下<kbd>Tab</kbd>，如果出现<code>arm2hpdl arm-linux-gprof arm-elf-addr2line arm-linux-ld arm-elf-ar arm-linux-nm arm-elf-as arm-linux-objcopy</code>，则表明安装成功</li>
+<li>测试是否安装成功: 终端，输入<code>arm-</code>，然后按两下<kbd>Tab</kbd>，如果出现<code>arm2hpdl arm-linux-gprof arm-elf-addr2line arm-linux-ld arm-elf-ar arm-linux-nm arm-elf-as arm-linux-objcopy......</code>，则表明安装成功</li>
 </ul>
 </li>
 <li>安装<code>32位库</code>: <code>sudo apt-get install ia32-libs</code>, <code>sudo apt-get install lib32z1</code>, 否则在make的时候会报<code>arm-none-linux-gnueabi-gcc:not found</code>的错误</li>
