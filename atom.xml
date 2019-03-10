@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-02-22T07:31:12.239Z</updated>
+  <updated>2019-03-10T14:11:02.627Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OpenSSL库的交叉编译（arm和mips）</title>
+    <link href="http://yoursite.com/2019/03/10/OpenSSL%E5%BA%93%E7%9A%84%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%EF%BC%88arm%E5%92%8Cmips%EF%BC%89/"/>
+    <id>http://yoursite.com/2019/03/10/OpenSSL库的交叉编译（arm和mips）/</id>
+    <published>2019-03-10T03:31:05.000Z</published>
+    <updated>2019-03-10T14:11:02.627Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;0x00-前言&quot;&gt;&lt;strong&gt;0x00 前言&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;这篇文章介绍了关于在Linux下对OpenSSL进行交叉编译（arm和mips）的方法，以及踩到的一些坑。&lt;/p&gt;
+&lt;h3 id=&quot;相关知识&quot;&gt;&lt;strong&gt;相关知识&lt;/stro
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="OpenSSL" scheme="http://yoursite.com/tags/OpenSSL/"/>
+    
+      <category term="交叉编译" scheme="http://yoursite.com/tags/%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/"/>
+    
+  </entry>
   
   <entry>
     <title>C语言根据函数指针得到其函数名</title>

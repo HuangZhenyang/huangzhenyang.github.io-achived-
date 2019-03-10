@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="OpenSSL,交叉编译," />
 
 
 
@@ -81,16 +81,18 @@
 
 
 
-<meta name="description" content="There&apos;s a phrase in Buddhism, &apos;Beginner&apos;s mind.&apos; It&apos;s wonderful to have a beginner&apos;s mind">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Huangzhy&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/Latex/index.html">
+<meta name="description" content="0x00 前言 这篇文章介绍了关于在Linux下对OpenSSL进行交叉编译（arm和mips）的方法，以及踩到的一些坑。 相关知识  OpenSSL 是一个安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。 默认下载下来的OpenSSL编出来的是x86体系结构的 arm和mips是两种体系结构  环境说明  系统：Ubun">
+<meta name="keywords" content="OpenSSL,交叉编译">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenSSL库的交叉编译（arm和mips）">
+<meta property="og:url" content="http://yoursite.com/2019/03/10/OpenSSL库的交叉编译（arm和mips）/index.html">
 <meta property="og:site_name" content="Huangzhy&#39;s Blog">
-<meta property="og:description" content="There&apos;s a phrase in Buddhism, &apos;Beginner&apos;s mind.&apos; It&apos;s wonderful to have a beginner&apos;s mind">
+<meta property="og:description" content="0x00 前言 这篇文章介绍了关于在Linux下对OpenSSL进行交叉编译（arm和mips）的方法，以及踩到的一些坑。 相关知识  OpenSSL 是一个安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。 默认下载下来的OpenSSL编出来的是x86体系结构的 arm和mips是两种体系结构  环境说明  系统：Ubun">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-10T14:11:02.627Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Huangzhy&#39;s Blog">
-<meta name="twitter:description" content="There&apos;s a phrase in Buddhism, &apos;Beginner&apos;s mind.&apos; It&apos;s wonderful to have a beginner&apos;s mind">
+<meta name="twitter:title" content="OpenSSL库的交叉编译（arm和mips）">
+<meta name="twitter:description" content="0x00 前言 这篇文章介绍了关于在Linux下对OpenSSL进行交叉编译（arm和mips）的方法，以及踩到的一些坑。 相关知识  OpenSSL 是一个安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。 默认下载下来的OpenSSL编出来的是x86体系结构的 arm和mips是两种体系结构  环境说明  系统：Ubun">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Latex/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/03/10/OpenSSL库的交叉编译（arm和mips）/"/>
 
 
 
 
 
-  <title>标签: Latex | Huangzhy's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>OpenSSL库的交叉编译（arm和mips） | Huangzhy's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -145,7 +147,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -283,54 +285,314 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Latex<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/10/OpenSSL库的交叉编译（arm和mips）/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Huang Zhenyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/vox.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huangzhy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/01/30/LaTex表格绘制的小技巧/" itemprop="url">
-              
-                <span itemprop="name">LaTex表格绘制的小技巧</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">OpenSSL库的交叉编译（arm和mips）</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-01-30T16:32:32+08:00"
-              content="2019-01-30" >
-          01-30
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-10T11:31:05+08:00">
+                2019-03-10
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-10T22:11:02+08:00">
+                2019-03-10
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="0x00-前言"><strong>0x00 前言</strong></h2>
+<p>这篇文章介绍了关于在Linux下对OpenSSL进行交叉编译（arm和mips）的方法，以及踩到的一些坑。</p>
+<h3 id="相关知识"><strong>相关知识</strong></h3>
+<ul>
+<li>OpenSSL 是一个安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。</li>
+<li>默认下载下来的OpenSSL编出来的是x86体系结构的</li>
+<li>arm和mips是两种体系结构</li>
+</ul>
+<h3 id="环境说明"><strong>环境说明</strong></h3>
+<ul>
+<li>系统：Ubuntu 16.04LTS</li>
+<li>arm的交叉编译器：arm-linux-gcc-4.4.3</li>
+<li>mips的交叉编译器： mipsel-openwrt-linux</li>
+<li>OpenSSL: 1.0.1f，最后面的f只是代表了一个版本，下载链接：<a href="https://github.com/openssl/openssl/releases/tag/OpenSSL_1_0_1f%EF%BC%8C%E4%B8%8B%E8%BD%BD%E5%AE%8C%E5%90%8E%E8%A7%A3%E5%8E%8B%EF%BC%8C%E8%BF%9B%E5%85%A5%E7%9B%AE%E5%BD%95%E4%B8%AD" target="_blank" rel="noopener">https://github.com/openssl/openssl/releases/tag/OpenSSL_1_0_1f，下载完后解压，进入目录中</a></li>
+</ul>
+<h2 id="0x01-openssl在arm下的交叉编译"><strong>0x01 OpenSSL在arm下的交叉编译</strong></h2>
+<ul>
+<li>安装<code>arm-linux-gcc</code>:
+<ul>
+<li>在链接: <a href="http://www.arm9.net/download.asp%E4%B8%AD%E4%B8%8B%E8%BD%BD" target="_blank" rel="noopener">http://www.arm9.net/download.asp中下载</a><code>ARM-Linux GCC 4.4.3</code></li>
+<li>解压: <code>sudo tar xvzf arm-linux-gcc-4.4.3.tgz -C/</code>, 执行该命令,将把arm-linux-gcc 安装到/opt/Friendlyarm/toolschain/4.4.3 目录</li>
+<li>建立目录: <code>sudo mkdir /usr/local/arm</code></li>
+<li>复制文件: <code>sudo cp -r /opt/FriendlyARM/toolschain/4.4.3 /usr/local/arm</code></li>
+<li>配置环境变量: <code>sudo vim /etc/bash.bashrc</code>, 在最后加上 <code>export PATH=$PATH:/opt/FriendlyARM/toolschain/4.4.3/bin</code></li>
+<li><code>source /etc/bash.bashrc</code></li>
+<li>测试是否安装成功: 终端，输入<code>arm-</code>，然后按两下<kbd>Tab</kbd>，如果出现<code>arm2hpdl arm-linux-gprof arm-elf-addr2line arm-linux-ld arm-elf-ar arm-linux-nm arm-elf-as arm-linux-objcopy</code>，则表明安装成功</li>
+</ul>
+</li>
+<li>安装<code>32位库</code>: <code>sudo apt-get install ia32-libs</code>, <code>sudo apt-get install lib32z1</code>, 否则在make的时候会报<code>arm-none-linux-gnueabi-gcc:not found</code>的错误</li>
+<li>对Openssl进行编译:
+<ul>
+<li>在OpenSSL的文件夹路径下的命令行中,输入<code>./config no-asm shared --prefix=/opt/openssl_1_0_1f_mips/</code>
+<ul>
+<li>该语句会生成<code>Makefile</code>文件,或者更新覆盖掉原有的文件</li>
+<li>如果遇到<code>target already defined</code> 的报错, 则使用<code>CC=arm-none-linux-gnueabi-gcc ./config no-asm shared</code></li>
+</ul>
+</li>
+<li>修改<code>Makefile</code>:
+<ul>
+<li><code>PLATFORM=arm</code>;</li>
+<li><code>CC=/opt/FriendlyARM/toolschain/4.4.3/bin/arm-none-linux-gnueabi-gcc</code></li>
+<li><code>AR=/opt/FriendlyARM/toolschain/4.4.3/bin/arm-none-linux-gnueabi-ar $(ARFLAGS) r</code></li>
+<li><code>RANLIB=/opt/FriendlyARM/toolschain/4.4.3/bin/arm-none-linux-gnueabi-ranlib</code></li>
+<li><code>NM=/opt/FriendlyARM/toolschain/4.4.3/bin/arm-none-linux-gnueabi-nm</code></li>
+<li>删除文件中所有的<code>-m64</code></li>
+</ul>
+</li>
+<li><code>make</code>进行编译</li>
+</ul>
+</li>
+</ul>
+<h2 id="0x02-openssl在mips下的交叉编译"><strong>0x02 OpenSSL在mips下的交叉编译</strong></h2>
+<ul>
+<li>安装<code>mipsel-openwrt-linux</code>(参考资料2):
+<ul>
+<li>进入http://archive.openwrt.org/barrier_breaker/14.07/ramips/mt7620a/</li>
+<li>下载包含<code>ToolChain</code>的压缩包: OpenWrt-Toolchain-ramips-for-mipsel_24kec+dsp-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2</li>
+<li>解压缩该压缩包,并将其<code>mv</code>到<code>/opt/</code>中,比如:<code>/opt/OpenWrt-ToolChain-ramips-for-mipsel_24kec+dsp-gcc-4.8-linaro_uClibc-0.9.33.2/</code>, 相关的可执行文件在<code>/opt/OpenWrt-ToolChain-ramips-for-mipsel_24kec+dsp-gcc-4.8-linaro_uClibc-0.9.33.2/OpenWrt-ToolChain-ramips-for-mipsel_24kec+dsp-gcc-4.8-linaro_uClibc-0.9.33.2/bin</code>目录下</li>
+<li>将<code>mipsel-openwrt-Linux-gcc</code>添加进环境变量:
+<ul>
+<li><code>sudo vim /etc/bash.bashrc</code></li>
+<li>在末尾添加: <code>export PATH=/opt/OpenWrt-ToolChain-ramips-for-mipsel_24kec+dsp-gcc-4.8-linaro_uClibc-0.9.33.2/OpenWrt-ToolChain-ramips-for-mipsel_24kec+dsp-gcc-4.8-linaro_uClibc-0.9.33.2/bin:$PATH</code></li>
+<li>然后执行<code>source /etc/bash.bashrc</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>对openssl进行编译(参考资料1):
+<ul>
+<li>在OpenSSL的文件夹路径下的命令行中,输入<code>./config no-asm shared --prefix=/opt/openssl_1_0_1f_mips/</code>
+<ul>
+<li>该语句会生成<code>Makefile</code>文件,或者更新覆盖掉原有的文件</li>
+</ul>
+</li>
+<li>修改Makefile:
+<ul>
+<li><code>PLATFORM=mips</code></li>
+<li><code>CC=/opt/OpenWrt-ToolChain-ramips-for-mipsel_24kec+dsp-gcc-4.8-linaro_uClibc-0.9.33.2/OpenWrt-ToolChain-ramips-for-mipsel_24kec+dsp-gcc-4.8-linaro_uClibc-0.9.33.2/bin/mipsel-openwrt-linux-gcc</code></li>
+<li><code>AR=/opt/OpenWrt-ToolChain-ramips-for-mipsel_24kec+dsp-gcc-4.8-linaro_uClibc-0.9.33.2/OpenWrt-ToolChain-ramips-for-mipsel_24kec+dsp-gcc-4.8-linaro_uClibc-0.9.33.2/bin/mipsel-openwrt-linux-ar $(ARFLAGS) r</code>  <strong>注意从这个步骤开始都只截取到<code>mipsel-openwrt-linux-</code></strong></li>
+<li><code>RANLIB=/opt/OpenWrt-ToolChain-ramips-for-mipsel_24kec+dsp-gcc-4.8-linaro_uClibc-0.9.33.2/OpenWrt-ToolChain-ramips-for-mipsel_24kec+dsp-gcc-4.8-linaro_uClibc-0.9.33.2/bin/mipsel-openwrt-linux-ranlib</code></li>
+<li><code>NM=/opt/OpenWrt-ToolChain-ramips-for-mipsel_24kec+dsp-gcc-4.8-linaro_uClibc-0.9.33.2/OpenWrt-ToolChain-ramips-for-mipsel_24kec+dsp-gcc-4.8-linaro_uClibc-0.9.33.2/bin/mipsel-openwrt-linux-nm</code></li>
+<li>安装zlib(可能不需要):<code>sudo apt-get install zliblg-dev</code></li>
+<li>删除文件中所有的<code>-m64</code></li>
+</ul>
+</li>
+<li><code>make</code>进行编译</li>
+</ul>
+</li>
+</ul>
+<p><strong>注意:</strong> 不能直接用复制出来的<code>Makefile</code>覆盖解压的文件夹中的<code>Makefile</code>，必须修改上述的那几条语句，否则编译不通过</p>
+<h2 id="0x04-测试"><strong>0x04 测试</strong></h2>
+<p>进入文件夹中的<code>test/</code>目录，命令行下输入<code>file ectest.o</code>查看是不是相应的架构即可。</p>
+<h2 id="0x05-总结"><strong>0x05 总结</strong></h2>
+<p>网上的资料太杂了，在搞了两天以后终于编译成功了，遂自己总结了这份可以复现的交叉编译步骤，方便日后自己或他人查阅。</p>
+<p>有什么有错的地方还请批评指正！</p>
+<hr>
+<h2 id="参考资料"><strong>参考资料</strong></h2>
+<ol>
+<li>mipsel-openwrt-linux交叉编译openssl-1.0.2l:
+<a href="https://blog.csdn.net/weixin_39510813/article/details/82705422" target="_blank" rel="noopener">https://blog.csdn.net/weixin_39510813/article/details/82705422</a></li>
+<li>在ubuntu 16.04 下搭建 mips 交叉编译环境:
+<a href="https://segmentfault.com/a/1190000010060338" target="_blank" rel="noopener">https://segmentfault.com/a/1190000010060338</a></li>
+</ol>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate me ! 打赏一下呗~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Huang Zhenyang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/OpenSSL/" rel="tag"># OpenSSL</a>
+          
+            <a href="/tags/交叉编译/" rel="tag"># 交叉编译</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/22/C语言根据函数指针得到其函数名/" rel="next" title="C语言根据函数指针得到其函数名">
+                <i class="fa fa-chevron-left"></i> C语言根据函数指针得到其函数名
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -338,6 +600,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODYzMi8xNTE2MA=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -358,8 +629,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -458,6 +738,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00-前言"><span class="nav-number">1.</span> <span class="nav-text">0x00 前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相关知识"><span class="nav-number">1.1.</span> <span class="nav-text">相关知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境说明"><span class="nav-number">1.2.</span> <span class="nav-text">环境说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-openssl在arm下的交叉编译"><span class="nav-number">2.</span> <span class="nav-text">0x01 OpenSSL在arm下的交叉编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-openssl在mips下的交叉编译"><span class="nav-number">3.</span> <span class="nav-text">0x02 OpenSSL在mips下的交叉编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-测试"><span class="nav-number">4.</span> <span class="nav-text">0x04 测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05-总结"><span class="nav-number">5.</span> <span class="nav-text">0x05 总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -611,6 +907,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -639,6 +939,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
@@ -1005,16 +1316,6 @@
       });
     </script>
     <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-  
-
-
-  
-
-  
-
-</body>
-</html>
-:end -->
   
 
 
