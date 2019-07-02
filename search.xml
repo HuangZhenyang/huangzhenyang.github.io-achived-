@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[汇编语言学习笔记]]></title>
+    <url>%2F2019%2F07%2F01%2F%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[0x00 前言 出来混总是要还的，当初上《系统级编程》没认真听讲，现在也是要还的！ 这是我在学习汇编语言基础过程中的一些笔记，方便自己和他人查阅。以前总觉得汇编太底层了，好难哦！但是以后要做安全这方向的话，就得逼着自己去学，希望会从中找到乐趣，阿洋加油啊！ 笔记 汇编语言由三类组成： 汇编指令（机器码的助记符） 伪指令（由编译器执行） 其他符号（由编译器识别）]]></content>
+      <categories>
+        <category>网络安全</category>
+      </categories>
+      <tags>
+        <tag>编程语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[sqlmap学习笔记]]></title>
+    <url>%2F2019%2F06%2F01%2Fsqlmap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[0x00 前言 本文是我在学习sqlmap中的笔记。刚开始学习网络安全，准备从web入手。不管怎样，加油吧！ 0x01 笔记 爆库：sqlmap -u url --dbs 爆表：sqlmap -u url -D 数据库名 --tables 爆字段：sqlmap -u url -D 数据库名 -T 表名 --columns 爆字段的值：sqlmap -u url -D 数据库名 -T 表名 -C 字段名 --dump 其中，url、数据库名、表名等都需要放在双引号里面。 可以简单总结出， -D这种单杠后面加大写字母的，后面接的是已经知道的确切数据，比如数据库名称。而--tables这种两个杠加上单词的，后面接的是要爆破的内容，比如表的名称，字段的值等等。 0x02 后记 暂时先记这么多，后面有学到再接着记录。]]></content>
+      <categories>
+        <category>网络安全</category>
+      </categories>
+      <tags>
+        <tag>sqlmap</tag>
+        <tag>sql注入</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[IDApython插件编写及脚本批量分析教程]]></title>
     <url>%2F2019%2F04%2F20%2FIDApython%E6%8F%92%E4%BB%B6%E7%BC%96%E5%86%99%E5%8F%8A%E8%84%9A%E6%9C%AC%E6%89%B9%E9%87%8F%E5%88%86%E6%9E%90%E6%95%99%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[0x00 前言 本文主要介绍了在IDA中编写IDApython插件的框架，还有利用IDApython脚本批量分析二进制文件的方法。 0x01 IDApython插件编写 介绍 在IDA中有很多插件供逆向分析人员使用，插件可以实现对二进制文件的自动化分析。通过插件的使用，可以大大提高分析的效率和准确率。同时，IDA也提供了IDApython的编程接口，让我们可以编写自己的插件脚本，实现自定义的插件功能。 IDApython主要有三个模块（这个我忘记在哪里看的了，之前摘的笔记，侵删）： idc：兼容IDA Pro中idc函数的模块； idautils：逆向分析中常用的一个模块，大多数处理方法都是需要依托于这个模块； idaapi：该模块允许使用者通过类的形式，访问更多底层的数据； 框架 插件的代码可以分为两部分，这两个部分在IDA安装目录下的 plugins和python文件夹中： plugins目录下的插件类，用于实例化插件对象，以及作为插件调用的入口，用来调用自定义的插件模块中的功能代码； 另一个是在python目录中定义的插件模块，实现了自定义的插件的功能； 代码 文件结构为： IDA Pro安装目录 plugins listFuncPlugin.py python listFunc __init__.py listFuncImpl.py 让我们从示例代码来理解，假设我们要实现一个列举出二进制文件中所有函数名的插件，在plugins文件夹中创建文件listFuncPlugin.py，在python文件夹下，创建一个文件夹叫listFunc，在listFunc文件夹下，创建__init__.py，listFuncImpl.py。 首先看一下插件类listFuncPlugin.py的代码。在该文件中，需要实现插件类ListFunc，以及一个PLUGIN_ENTRY函数，该函数用于生成一个插件实例对象。在插件类中，除了定义插件的名称，快捷键等信息，还需要实现三个方法： init()方法：初始化操作，比如打印提示信息，导入功能模块； run()方法：插件的入口函数，调用功能模块的函数； term()方法：结束时调用的方法； 1234567891011121314151617181920212223242526272829303132333435363738394041424344# -*- coding:utf-8 -*-# ======= import =======import idautilsimport idaapiimport idcfrom datetime import datetimeclass ListFunc(idaapi.plugin_t): # 继承 idaapi.plugin_t """ 插件类 """ flags = idaapi.PLUGIN_UNL comment = "List all functions in this binary file." wanted_name = "listfunc" # 插件的名称，在IDA界面导航栏中显示 Edit-&gt;Plugins-&gt;myplugin wanted_hotkey = "Alt-F6" # 插件的快捷键 help = "Coming soon..." def init(self): """ 初始化方法 """ idaapi.msg("&gt;&gt;&gt; My plugin starts. &#123;0&#125;\n".format(datetime.now())) # 导入python目录下的功能模块 idaapi.require("listFunc") idaapi.require("listFunc.listFuncImpl") return idaapi.PLUGIN_OK # return PLUGIN_KEEP def run(self, arg): listFunc.listFuncImpl.main() # 注意这里的调用方式是从python中模块的文件夹开始 def term(self): idaapi.msg("&gt;&gt;&gt; My plugin ends. &#123;0&#125;\n".format(datetime.now()))def PLUGIN_ENTRY(): """ 实例化插件对象 """ return ListFunc() 接下来在python文件夹的listFunc目录中，先创建__init__.py文件，因为IDApython是Python2.7，所以添加该文件表明该目录是一个模块，如果没有这个文件的话，在运行插件的时候会报错：No module named xxx； 然后编写目录下的listFuncImpl.py，这里的main()方法就是在插件类中run()方法调用的函数。 12345678910111213141516# -*- coding:utf-8 -*-# ======= import =======import idautilsimport idaapiimport idcfrom datetime import datetimedef main(): for i, func in enumerate(idautils.Functions()): func_name = idc.GetFunctionName(func) # 函数名 print("&#123;0&#125; function name is: &#123;1&#125;".format(i, func_name))if __name__ == '__main__': main() 到这里，插件的实现就完成了，接下来只需要用IDA打开二进制文件以后，按下插件的快捷键，就能执行自定义的插件了。 0x02 脚本批量分析 介绍 既然我们可以用IDApython编写的脚本对二进制文件进行自动化分析，那么，在实际情况中，我们可能会遇到需要分析很多个二进制文件的情况。在这个应用场景下，就需要用IDA提供的命令行接口来调用IDApython脚本，进行二进制文件的批量分析处理。 思路 思路就是，先用python编写一个调用脚本，在该脚本中，利用python的命令行接口，调用IDApython的分析程序，对遍历得到的二进制文件进行分析处理。 代码 还是一样，通过代码来理解如何使用哈。假设我们这里实现的是一个对很多二进制文件进行分析，得到二进制文件中的函数名。 首先是分析脚本，analysis.py。需要注意的是，由于分析脚本是被调用的，所以要在文件末尾添加if __name__=='__main__'，从而能够调用该文件中的分析方法。 12345678910111213141516def analysis(): # 这里是分析的代码 passdef main(): """ 控制器 """ idc.Wait() # 等IDA分析完后才执行 analysis() idc.Exit(0) # 关闭IDAif __name__ == "__main__": main() 然后就是调用脚本，run.py。 12345678910111213141516171819202122# -*- coding:utf-8 -*-# =======Import =======import osimport subprocessdir_path = "D://transfer/" # 原始数据的文件夹ida64_path = "D://ProgramFiles/IDA/ida64.exe" # ida64的路径ana_file = "D://listFunc/listFuncImpl.py" # 分析文件的路径def run(): for root, dirs, files in os.walk(dir_path): for file_name in files: file_path = os.path.join(root, file_name) cmd = "&#123;0&#125; -LD:/mylog.log -c -A -S&#123;1&#125; &#123;2&#125;".format(ida64_path, ana_file, file_path) p = subprocess.Popen(cmd) p.wait()if __name__ == "__main__": run() -L表示输出的日志路径，-c表示对二进制文件进行反汇编，-A表示自动模式，IDA不会提示一些信息，会自动处理，-S后面的路径是分析脚本的路径 其中，-L和-S与后面的路径之间是没有空格的。 比如，cmd为D://ProgramFiles/IDA/ida64.exe -LD:/mylog.log -c -A -SD://listFunc/listFuncImpl.py D://transfer/m64-O0\aes-x86_64.o 调试的小技巧： 由于我们是通过命令接口进行调试的，这样有一个很不方便的地方就是，如果分析脚本中出错了，很难拿到报错信息。这里我提供两个思路，第一个就是在run.py中代码所示的那样，将运行结果输出到log文件中。还有一种思路就是在分析脚本中，使用python中的traceback模块捕获信息。 0x03 后记 明天晚上就要回学校了，下午写了这篇最近一直想总结，但是没时间做的内容。在这边实习了大半年，学到了很多知识。组里的氛围真的很好，师兄师姐和导师都很nice! 在这边也意识到，科研没有自己想象中的那么理想，不过真正的英雄主义就是认清科研的本质并热爱她？希望自己研究生能在专业方面做出点成绩吧。好好努力，好好耍哈哈哈！ 烦心的毕设快要结束了，红公保庇我能顺利毕业吧！还有两三个月就要毕业了，我的马鸭！高中毕业典礼的场景还历历在目，不瞒你说我是最经受不住分别的人了。接下来应该会写一篇大学四年的总结吧。 0x04 参考资料 倚天屠龙（一）：妙用IDA Pro--利用IDAPython编写调试插件 flare-ida IDAPyhon 脚本批量分析程序]]></content>
@@ -81,9 +104,9 @@
         <category>投资理财</category>
       </categories>
       <tags>
+        <tag>指数基金</tag>
         <tag>基金定投</tag>
         <tag>读书笔记</tag>
-        <tag>指数基金</tag>
       </tags>
   </entry>
   <entry>
