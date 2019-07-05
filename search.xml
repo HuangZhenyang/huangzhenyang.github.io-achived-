@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[汇编语言学习笔记]]></title>
-    <url>%2F2019%2F07%2F01%2F%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[0x00 前言 出来混总是要还的，当初上《系统级编程》没认真听讲，现在也是要还的！ 这是我在学习汇编语言基础过程中的一些笔记，方便自己和他人查阅。以前总觉得汇编太底层了，好难哦！但是以后要做安全这方向的话，就得逼着自己去学，希望会从中找到乐趣，阿洋加油啊！ 笔记 汇编语言由三类组成： 汇编指令（机器码的助记符） 伪指令（由编译器执行） 其他符号（由编译器识别）]]></content>
+    <title><![CDATA[《How to Read a Paper》阅读笔记]]></title>
+    <url>%2F2019%2F07%2F05%2F%E3%80%8AHow-to-Read-a-Paper%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[0x00 前言 本文是对《How to Read a Paper》的翻译，该文章介绍了文献阅读的“三遍阅读法”。(ಥ_ಥ) 不知道为啥CSDN的资源一直传不上去…… 0x01 文献阅读的重要性 保持自己在领域的前沿 做新的领域的调研 。。。 0x02 The Three-Pass Approach（三遍阅读法） The first pass 1.1 目标:了解整篇paper的大意 1.2 步骤： 阅读Title，Abstract，Introduction 阅读每一个部分的标题以及子标题，但是忽略该部分里面的内容 浏览paper中的数学部分，确定潜在的理论基础 阅读Conclusion 浏览一下Reference部分，勾选一下你已经阅读过的paper 1.3 first pass后能回答以下五个“C”： Category：这篇paper的类型是什么？评估的？对现有系统的分析？还是一个原型的描述？…… Context：有哪些与之相关的论文？ 哪些理论基础可以来分析问题？ Correctness：paper里的假设是合理的吗？ Contributions：这篇paper的贡献是什么？ Clarity：这篇paper写的好吗？（思路清晰，语言组织，实验……） 1.4 基于以上五个 &quot;C&quot; ，可以决定是否深入读该paper，或者判断其是否不是你的研究领域但是未来可能会与你的研究领域相关的。- 1.5 反之，在写paper的时候，也要注意标题、子标题、图表、摘要。 The Second Pass 2.1 目标：较为详细的阅读paper，但是忽略细节，如证明。记录关键点，自己不理解的地方 2.2 步骤： 仔细查看图表，特别注意坐标轴是否被正确标记？结果是否显示了误差，以致于结果具有统计显著性。 标注未读的Reference中的paper以便接下来的深入阅读 2.3 进行了second pass以后，能够抓住整篇paper的主体内容 2.4 有时在做完Second Pass之后仍然无法理解这篇paper，这可能是因为主题对你来说是新的，有不熟悉的术语和缩略语；或者作者使用的证明或者实验方法你不了解。 2.5 接下来你可以选择： 把paper扔在一边 过后再回过头来看这篇paper，也许在读了相关的背景材料 坚持进行The Third Pass The Third Pass 3.1 目标：完全理解这篇paper 3.2 步骤：尝试重现论文--作出和作者同样的假设，并尝试重复作者在paper中的work。这样，不但可以理解作者的work，还能找出隐含的缺陷和假设 3.3 需要对细节有很好的理解，同时需要思考自己如何提出一个特别的idea。将自己重现的工作与作者的工作比较有助于深入了解paper中的证明和展示的方法，并且在这个过程中应该记录关于future work的idea。 3.4 结果：能够在记忆中重现整篇paper的结构和内容，包括其优点和缺点。特别的，你应能够确定隐含的假设，缺少的相关工作的引用，以及实验或分析技术的潜在问题。 0x03 文献调研 文献调研是检验paper reading skills的好方法，它需要你读很多很多的paper，有些甚至是陌生领域的paper。应该读什么paper呢？这里也有The Three-Pass Approach The Three-Pass Approach 2.1 使用搜索引擎（大学图书馆，Google Scholar）搜索精挑细选过的关键字，并挑选3-5篇领域内的高引用论文。 对每篇paper都进行上述的First Pass得到这部分研究的工作，并阅读这些paper中的Related Work部分。你将找到最近的研究工作的缩略摘要，如果幸运的话，可能会找到最近的一份调查报告（找到的话就偷着乐，好好阅读）。 2.2 否则的话，进入第二步，在参考书目中查找共享引文和重复的作者姓名。这些是领域内的关键paper和大牛。下载关键paper然后放到一边，查看这些大牛最近发的paper（一般都是顶会paper） 2.3 第三步是访问这些顶级会议的网站，并查看他们最近的会议记录。快速浏览使你了解最近的相关的高质量工作。这些paper和你第二步得到的paper是你这次调研得到的第一印象。对他们做上述的前两个Pass，如果发现他们都引用了你没找到的paper，那么找到并下载它，阅读之，重复其内容。 0x04 后记 以上是我在阅读《How to Read a Paper》过程中的翻译和笔记。]]></content>
       <categories>
-        <category>网络安全</category>
+        <category>科研</category>
       </categories>
       <tags>
-        <tag>编程语言</tag>
+        <tag>文献阅读</tag>
       </tags>
   </entry>
   <entry>
