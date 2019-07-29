@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[XCTF-Reverse-ExerciseArea-004-writeup]]></title>
+    <url>%2F2019%2F07%2F29%2FXCTF-Reverse-ExerciseArea-004-writeup%2F</url>
+    <content type="text"><![CDATA[0x00 介绍 本题是xctf攻防世界中Reverse的新手第四题。 这道题只给了code.c文件，我们需要分析该文件中代码的流程，解出flag。本题考查的主要是C语言的库函数 实验环境：Vscode 0x01 解题过程 直接打开C文件读代码即可 首先是一开始的参数数量判断，这里需要注意的是运行的时候，code.exe param1 param2 param3 中 code.exe为参数1。因此用户输入的参数数量应该为3个 第一个参数经过atoi()函数后是否与0xcafe相等 atoi (表示 ascii to integer)是把字符串转换成整型数的一个函数，应用在计算机程序和办公软件中。int atoi(const char *nptr) 函数会扫描参数 nptr字符串，会跳过前面的空白字符（例如空格，tab缩进）等。如果 nptr不能转换成 int 或者 nptr为空字符串，那么将返回 0。atoi我理解的是把数字形式的字符串转换成int类型，比如&quot;123.45&quot; -&gt; 123 因此，输入的第一个参数必须为数字。把十六进制0xcafe转成十进制，为51966，当然也可以51966.xxx 123456unsigned int first = atoi(argv[1]); // 数字形式的字符串转intif (first != 0xcafe) &#123; // 十进制为：51966 printf("you are wrong, sorry.\n"); exit(2);&#125; 测试通过： Tips: 可以先把判断参数数量和后面的参数判断的内容注释掉，添加参数1判断成功的提示信息 第二个参数经过atoi()函数后得到的整数必须同时都不满足以下两个条件 条件1：second % 5 == 3 条件2：second % 17 != 8 先从条件2开始看，second = 17 * n + 8 (n=0,1,2,3...)， 即second = 8, 25, 42, ... 结合条件1，second取24即可 123456unsigned int second = atoi(argv[2]);if (second % 5 == 3 || second % 17 != 8) &#123; printf("ha, you won't get it!\n"); exit(3);&#125; 测试通过： 考察strcmp函数的返回值，两个比较的字符串相同时返回0，不同时返回正数。 if的主体中，会调用exit()函数退出，因此if的条件判断结果必须为0，也就是参数3必须为&quot;h4cky0u&quot; 12345if (strcmp("h4cky0u", argv[3])) &#123; // strcmp，相同返回0，不同返回正数。 printf("so close, dude!\n"); exit(4);&#125; 结合上面三个，拿到flag：c0ffee]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>ReverseEngineering</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[XCTF-Reverse-ExerciseArea-003-writeup]]></title>
     <url>%2F2019%2F07%2F29%2FXCTF-Reverse-ExerciseArea-003-writeup%2F</url>
     <content type="text"><![CDATA[0x00 介绍 本题是xctf攻防世界中Reverse的新手第三题。 对给定的helloctf.exe进行逆向分析，找到serial。 实验环境：IDA Pro 7.0 0x01 解题过程 1.1 前期的分析 运行helloctf.exe，可以看到需要输入serial，如果输错的话会进入下一次循环判断 我们还是从字符串please input your serial:入手。用IDA打开helloctf.exe，Shift+F12，显示在该二进制文件中的所有字符串。在顶部导航栏中：Search → Search，输入字符串please input your serial:，然后双击跳转 再双击，跳到引用该字符串的地方。 可以看到是在main中引用的 并且可以看到，在main函数的开始，将字符串437261636b4d654a757374466f7246756e赋值给了寄存器esi 1.2 具体基本块的分析 用Ollydbg来运行helloctf.exe。可以看到，地址0x40101A--0x401057是读取用户的输入，并对输入字符串的长度进行限制。 地址0x40105F将用户输入字符串的第一个字符赋值给了寄存器al，也就是寄存器eax的低八位。接下来，如果al保存的值为0则直接跳到与字符串437261636b4d654a757374466f7246756e比较的基本块。显然不符合要求，因此第一个字符不能为0 然后是最主要的部分，地址0x401067开始，对于用户输入的字符串，在循环中，将每个字符对应的十六进制数拼接到寄存器edx中保存，比如我输入的是hzylll，那么得到的结果是687a796c6c6c 从地址0x4010B0开始，让上面循环中得到的十六进制字符串跟一开始的字符串437261636b4d654a757374466f7246756e进行比较，二者一致才输出success的字样 结论：分析到这里，题目的意图很明显了，给定一个字符串437261636b4d654a757374466f7246756e，你的输入转成16进制字符串以后必须跟它一样。只要把代码中给的字符串转成ASCII码形式即可 解密脚本： 123456789# -*- coding:utf-8 -*-import binasciisrc_str = '437261636b4d654a757374466f7246756e'res = binascii.a2b_hex(src_str)print(res) 脚本运行结果为：CrackMeJustForFun 1.3 结果 输出success!信息，说明拿到了flag]]></content>
@@ -126,9 +137,9 @@
         <category>投资理财</category>
       </categories>
       <tags>
+        <tag>指数基金</tag>
         <tag>基金定投</tag>
         <tag>读书笔记</tag>
-        <tag>指数基金</tag>
       </tags>
   </entry>
   <entry>
