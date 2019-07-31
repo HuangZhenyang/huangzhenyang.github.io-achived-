@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="0x00 介绍 本题是xctf攻防世界中Reverse的新手第五题。 根据题目描述：菜鸡拿到了一个被加壳的二进制文件，可以知道这次的二进制文件被加壳处理了，因此需要先查壳，脱壳，再进行逆向分析找到flag 实验环境：IDA Pro 7.0 0x01 解题过程 1.1 判断文件类型 在Vscode中安装插件：hexdump for VSCode，用Vscode打开，显示文件的十六进制：  可以看到文">
+<meta name="keywords" content="ReverseEngineering">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XCTF-Reverse-ExerciseArea-005-writeup">
+<meta property="og:url" content="http://yoursite.com/2019/07/31/XCTF-Reverse-ExerciseArea-005-writeup/index.html">
+<meta property="og:site_name" content="y4ung&#39;s Blog">
+<meta property="og:description" content="0x00 介绍 本题是xctf攻防世界中Reverse的新手第五题。 根据题目描述：菜鸡拿到了一个被加壳的二进制文件，可以知道这次的二进制文件被加壳处理了，因此需要先查壳，脱壳，再进行逆向分析找到flag 实验环境：IDA Pro 7.0 0x01 解题过程 1.1 判断文件类型 在Vscode中安装插件：hexdump for VSCode，用Vscode打开，显示文件的十六进制：  可以看到文">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/XCTF-Reverse-ExerciseArea-005-writeup/1-1.png">
+<meta property="og:image" content="http://yoursite.com/images/XCTF-Reverse-ExerciseArea-005-writeup/1-2.png">
+<meta property="og:image" content="http://yoursite.com/images/XCTF-Reverse-ExerciseArea-005-writeup/1-3.png">
+<meta property="og:image" content="http://yoursite.com/images/XCTF-Reverse-ExerciseArea-005-writeup/1-4.png">
+<meta property="og:image" content="http://yoursite.com/images/XCTF-Reverse-ExerciseArea-005-writeup/1-5.png">
+<meta property="og:updated_time" content="2019-07-31T13:49:22.693Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XCTF-Reverse-ExerciseArea-005-writeup">
+<meta name="twitter:description" content="0x00 介绍 本题是xctf攻防世界中Reverse的新手第五题。 根据题目描述：菜鸡拿到了一个被加壳的二进制文件，可以知道这次的二进制文件被加壳处理了，因此需要先查壳，脱壳，再进行逆向分析找到flag 实验环境：IDA Pro 7.0 0x01 解题过程 1.1 判断文件类型 在Vscode中安装插件：hexdump for VSCode，用Vscode打开，显示文件的十六进制：  可以看到文">
+<meta name="twitter:image" content="http://yoursite.com/images/XCTF-Reverse-ExerciseArea-005-writeup/1-1.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>XCTF-Reverse-ExerciseArea-005-writeup</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/07/29/XCTF-Reverse-ExerciseArea-004-writeup/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/31/XCTF-Reverse-ExerciseArea-005-writeup/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/31/XCTF-Reverse-ExerciseArea-005-writeup/&text=XCTF-Reverse-ExerciseArea-005-writeup"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/31/XCTF-Reverse-ExerciseArea-005-writeup/&title=XCTF-Reverse-ExerciseArea-005-writeup"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/31/XCTF-Reverse-ExerciseArea-005-writeup/&is_video=false&description=XCTF-Reverse-ExerciseArea-005-writeup"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=XCTF-Reverse-ExerciseArea-005-writeup&body=Check out this article: http://yoursite.com/2019/07/31/XCTF-Reverse-ExerciseArea-005-writeup/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/31/XCTF-Reverse-ExerciseArea-005-writeup/&title=XCTF-Reverse-ExerciseArea-005-writeup"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/31/XCTF-Reverse-ExerciseArea-005-writeup/&title=XCTF-Reverse-ExerciseArea-005-writeup"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/31/XCTF-Reverse-ExerciseArea-005-writeup/&title=XCTF-Reverse-ExerciseArea-005-writeup"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/31/XCTF-Reverse-ExerciseArea-005-writeup/&title=XCTF-Reverse-ExerciseArea-005-writeup"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/31/XCTF-Reverse-ExerciseArea-005-writeup/&name=XCTF-Reverse-ExerciseArea-005-writeup&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-介绍"><span class="toc-number">1.</span> <span class="toc-text">0x00 介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-解题过程"><span class="toc-number">2.</span> <span class="toc-text">0x01 解题过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-判断文件类型"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 判断文件类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-脱壳"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 脱壳</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-逆向分析"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 逆向分析</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        XCTF-Reverse-ExerciseArea-005-writeup
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">y4ung's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-07-31T13:39:13.000Z" itemprop="datePublished">2019-07-31</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/CTF/">CTF</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/ReverseEngineering/">ReverseEngineering</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="0x00-介绍"><strong>0x00 介绍</strong></h2>
+<p>本题是xctf攻防世界中Reverse的新手第五题。</p>
+<p>根据题目描述：<code>菜鸡拿到了一个被加壳的二进制文件</code>，可以知道这次的二进制文件被加壳处理了，因此需要先查壳，脱壳，再进行逆向分析找到flag</p>
+<p>实验环境：IDA Pro 7.0</p>
+<h2 id="0x01-解题过程"><strong>0x01 解题过程</strong></h2>
+<h3 id="1-1-判断文件类型"><strong>1.1 判断文件类型</strong></h3>
+<p>在Vscode中安装插件：<code>hexdump for VSCode</code>，用Vscode打开，显示文件的十六进制：</p>
+<p><img src="/images/XCTF-Reverse-ExerciseArea-005-writeup/1-1.png" alt=""></p>
+<p>可以看到文件的开头有 <code>ELF</code>，说明这是一个在Linux下的可执行文件；相应的，如果再文件开头看到 <code>MZ</code>，说明是在Windows下的可执行文件；</p>
+<p>用IDA打开原始文件simple_2，可以看到识别出来的函数很少，应该就是被加壳了</p>
+<p><img src="/images/XCTF-Reverse-ExerciseArea-005-writeup/1-2.png" alt=""></p>
+<h3 id="1-2-脱壳"><strong>1.2 脱壳</strong></h3>
+<p>首先应当查壳，可以用PEID查。</p>
+<p>在ctf比赛中的pwn大多在Linux下，一般linux下很少有强力的壳，利用upx工具对该二进制文件进行脱壳</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">upx.exe -d D:\ctf-learning\reverse-engineering\xctf\ExerciseArea\005\simple2 -o simple2_upx</span><br></pre></td></tr></table></figure>
+<p><img src="/images/XCTF-Reverse-ExerciseArea-005-writeup/1-3.png" alt=""></p>
+<p>得到脱壳后的二进制文件: simple2_upx</p>
+<p>用IDA打开，可以看到识别出来的函数变多了</p>
+<p><img src="/images/XCTF-Reverse-ExerciseArea-005-writeup/1-4.png" alt=""></p>
+<h3 id="1-3-逆向分析"><strong>1.3 逆向分析</strong></h3>
+<p>用IDA打开，可以看到main函数中，需要输入96个字符，然后将用户的输入与一个字符串比较。可以看到字符串是 <code>flag{...}</code> 的形式。因此，到这里为止就拿到了flag：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">flag&#123;Upx_1s_n0t_a_d3liv3r_c0mp4ny&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/XCTF-Reverse-ExerciseArea-005-writeup/1-5.png" alt=""></p>
+<p>这题考察的就是查壳和脱壳了，逆向分析这块不是考察重点。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-介绍"><span class="toc-number">1.</span> <span class="toc-text">0x00 介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-解题过程"><span class="toc-number">2.</span> <span class="toc-text">0x01 解题过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-判断文件类型"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 判断文件类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-脱壳"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 脱壳</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-逆向分析"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 逆向分析</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/31/XCTF-Reverse-ExerciseArea-005-writeup/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/31/XCTF-Reverse-ExerciseArea-005-writeup/&text=XCTF-Reverse-ExerciseArea-005-writeup"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/31/XCTF-Reverse-ExerciseArea-005-writeup/&title=XCTF-Reverse-ExerciseArea-005-writeup"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/31/XCTF-Reverse-ExerciseArea-005-writeup/&is_video=false&description=XCTF-Reverse-ExerciseArea-005-writeup"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=XCTF-Reverse-ExerciseArea-005-writeup&body=Check out this article: http://yoursite.com/2019/07/31/XCTF-Reverse-ExerciseArea-005-writeup/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/31/XCTF-Reverse-ExerciseArea-005-writeup/&title=XCTF-Reverse-ExerciseArea-005-writeup"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/31/XCTF-Reverse-ExerciseArea-005-writeup/&title=XCTF-Reverse-ExerciseArea-005-writeup"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/31/XCTF-Reverse-ExerciseArea-005-writeup/&title=XCTF-Reverse-ExerciseArea-005-writeup"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/31/XCTF-Reverse-ExerciseArea-005-writeup/&title=XCTF-Reverse-ExerciseArea-005-writeup"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/31/XCTF-Reverse-ExerciseArea-005-writeup/&name=XCTF-Reverse-ExerciseArea-005-writeup&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 y4ung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+</body>
+</html>
