@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-02T03:06:58.624Z</updated>
+  <updated>2019-08-03T00:55:25.193Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>XCTF-Reverse-ExerciseArea-007-writeup</title>
+    <link href="http://yoursite.com/2019/08/03/XCTF-Reverse-ExerciseArea-007-writeup/"/>
+    <id>http://yoursite.com/2019/08/03/XCTF-Reverse-ExerciseArea-007-writeup/</id>
+    <published>2019-08-03T00:54:19.000Z</published>
+    <updated>2019-08-03T00:55:25.193Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;0x00-介绍&quot;&gt;&lt;strong&gt;0x00 介绍&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;本题是xctf攻防世界中Reverse的新手第七题。题目来源：&lt;code&gt;9447 CTF 2014&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;需要对该二进制文件insanity进行逆向分析，找
+      
+    
+    </summary>
+    
+      <category term="CTF" scheme="http://yoursite.com/categories/CTF/"/>
+    
+    
+      <category term="ReverseEngineering" scheme="http://yoursite.com/tags/ReverseEngineering/"/>
+    
+  </entry>
   
   <entry>
     <title>XCTF-Reverse-ExerciseArea-006-writeup</title>
@@ -513,30 +538,6 @@
     
     
       <category term="数据结构与算法" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 371 两整数之和</title>
-    <link href="http://yoursite.com/2018/08/25/LeetCode-371-%E4%B8%A4%E6%95%B4%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
-    <id>http://yoursite.com/2018/08/25/LeetCode-371-两整数之和/</id>
-    <published>2018-08-25T09:10:14.000Z</published>
-    <updated>2018-08-27T06:19:07.910Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题目描述&quot;&gt;&lt;strong&gt;题目描述&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/sum-of-two-integers/description/&quot; target=&quot;_blank&quot; rel=
-      
-    
-    </summary>
-    
-      <category term="数据结构与算法" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
   </entry>
   
