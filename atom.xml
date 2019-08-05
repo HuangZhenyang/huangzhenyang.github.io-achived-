@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-03T00:55:25.193Z</updated>
+  <updated>2019-08-05T11:07:22.598Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>XCTF-Reverse-ExerciseArea-009-writeup</title>
+    <link href="http://yoursite.com/2019/08/05/XCTF-Reverse-ExerciseArea-009-writeup/"/>
+    <id>http://yoursite.com/2019/08/05/XCTF-Reverse-ExerciseArea-009-writeup/</id>
+    <published>2019-08-05T11:06:13.000Z</published>
+    <updated>2019-08-05T11:07:22.598Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;0x00-介绍&quot;&gt;&lt;strong&gt;0x00 介绍&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;本题是xctf攻防世界中Reverse的新手第九题。题目来源：&lt;code&gt;NJUPT CTF 2017&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;给了一个python经过编译后得到的字节文件Py
+      
+    
+    </summary>
+    
+      <category term="CTF" scheme="http://yoursite.com/categories/CTF/"/>
+    
+    
+      <category term="ReverseEngineering" scheme="http://yoursite.com/tags/ReverseEngineering/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>XCTF-Reverse-ExerciseArea-008-writeup</title>
+    <link href="http://yoursite.com/2019/08/05/XCTF-Reverse-ExerciseArea-008-writeup/"/>
+    <id>http://yoursite.com/2019/08/05/XCTF-Reverse-ExerciseArea-008-writeup/</id>
+    <published>2019-08-05T11:06:05.000Z</published>
+    <updated>2019-08-05T11:06:53.203Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;0x00-介绍&quot;&gt;&lt;strong&gt;0x00 介绍&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;本题是xctf攻防世界中Reverse的新手第八题。题目来源：&lt;code&gt;9447 CTF 2014&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;需要对该二进制文件no_strings_attac
+      
+    
+    </summary>
+    
+      <category term="CTF" scheme="http://yoursite.com/categories/CTF/"/>
+    
+    
+      <category term="ReverseEngineering" scheme="http://yoursite.com/tags/ReverseEngineering/"/>
+    
+  </entry>
   
   <entry>
     <title>XCTF-Reverse-ExerciseArea-007-writeup</title>
@@ -406,11 +456,11 @@
       <category term="投资理财" scheme="http://yoursite.com/categories/%E6%8A%95%E8%B5%84%E7%90%86%E8%B4%A2/"/>
     
     
-      <category term="指数基金" scheme="http://yoursite.com/tags/%E6%8C%87%E6%95%B0%E5%9F%BA%E9%87%91/"/>
-    
       <category term="基金定投" scheme="http://yoursite.com/tags/%E5%9F%BA%E9%87%91%E5%AE%9A%E6%8A%95/"/>
     
       <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="指数基金" scheme="http://yoursite.com/tags/%E6%8C%87%E6%95%B0%E5%9F%BA%E9%87%91/"/>
     
   </entry>
   
@@ -478,58 +528,6 @@
 &lt;h3 id=&quot;题目描述&quot;&gt;&lt;strong&gt;题目描述&lt;/strong&gt;&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;$N$ 种物品，容量为$W$的背包。第$i$件物品重量为$W{_i}$，价值是$V{
-      
-    
-    </summary>
-    
-      <category term="数据结构与算法" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="数据结构与算法" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>动态规划学习笔记（二）01背包</title>
-    <link href="http://yoursite.com/2018/08/29/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%8901%E8%83%8C%E5%8C%85/"/>
-    <id>http://yoursite.com/2018/08/29/动态规划学习笔记（二）01背包/</id>
-    <published>2018-08-29T01:41:03.000Z</published>
-    <updated>2018-08-29T07:56:34.442Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;01背包&quot;&gt;&lt;strong&gt;01背包&lt;/strong&gt;&lt;/h2&gt;
-&lt;h3 id=&quot;题目描述&quot;&gt;&lt;strong&gt;题目描述&lt;/strong&gt;&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;N件物品，容量为W的背包，第 i 件物品的重量为 W&lt;sub&gt;i&lt;/sub&gt;，价值是
-      
-    
-    </summary>
-    
-      <category term="数据结构与算法" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="数据结构与算法" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>动态规划学习笔记（一）引言</title>
-    <link href="http://yoursite.com/2018/08/29/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E5%BC%95%E8%A8%80/"/>
-    <id>http://yoursite.com/2018/08/29/动态规划学习笔记（一）引言/</id>
-    <published>2018-08-29T01:26:42.000Z</published>
-    <updated>2018-08-29T01:43:49.162Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;介绍&quot;&gt;&lt;strong&gt;介绍&lt;/strong&gt;&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;动态规划（英语：Dynamic programming，简称DP），是一种通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。&lt;br&gt;
-动态规划常常适用于有重叠子问题
       
     
     </summary>
