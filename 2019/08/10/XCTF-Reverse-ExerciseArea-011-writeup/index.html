@@ -14,14 +14,14 @@
 <meta property="og:site_name" content="y4ung&#39;s Blog">
 <meta property="og:description" content="0x00 介绍 本题是xctf攻防世界中Reverse的新手第十一题。题目来源：CSAW CTF 2014 给了一个二进制文件csaw2013reversing2.exe，需要对该二进制文件进行逆向分析，找到flag 实验环境：IDA Pro 7.0，gdb 本题考查的是反调试，IsDebuggerPresent函数，int 3中断 0x01 解题过程 1.1 文件分析 windows下的可执行文">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/images/XCTF-Reverse-ExerciseArea-011-writeup/1-1.png">
-<meta property="og:image" content="http://yoursite.com/images/XCTF-Reverse-ExerciseArea-011-writeup/1-2.png">
-<meta property="og:image" content="http://yoursite.com/images/XCTF-Reverse-ExerciseArea-011-writeup/1-3.png">
-<meta property="og:updated_time" content="2019-08-10T07:52:15.896Z">
+<meta property="og:image" content="http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/images/1-1.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/images/1-2.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/images/1-3.png">
+<meta property="og:updated_time" content="2019-08-10T08:36:03.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XCTF-Reverse-ExerciseArea-011-writeup">
 <meta name="twitter:description" content="0x00 介绍 本题是xctf攻防世界中Reverse的新手第十一题。题目来源：CSAW CTF 2014 给了一个二进制文件csaw2013reversing2.exe，需要对该二进制文件进行逆向分析，找到flag 实验环境：IDA Pro 7.0，gdb 本题考查的是反调试，IsDebuggerPresent函数，int 3中断 0x01 解题过程 1.1 文件分析 windows下的可执行文">
-<meta name="twitter:image" content="http://yoursite.com/images/XCTF-Reverse-ExerciseArea-011-writeup/1-1.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/images/1-1.png">
     
     
         
@@ -165,13 +165,12 @@
 <ol>
 <li>在windows下运行该文件，发现是一坨乱码， = =||</li>
 </ol>
-<p><img src="/images/XCTF-Reverse-ExerciseArea-011-writeup/1-1.png" alt=""></p>
+<p><img src="./images/1-1.png" alt=""></p>
 <ol start="2">
 <li>能知道的就只有<code>Flag</code>、<code>中止</code>、<code>重试</code>和<code>忽略</code>四个字符串，在这里我先在IDA和Ollydbg里搜索字符串Flag，找到引用它的地方。[ebp-0xC]是乱码字符串的起始地址</li>
 </ol>
 <p>并且在IDA中可以发现基本块0x40108C ⇒ 0x401094处，调用了数据段ds(Data Segment)的<code>IsDebuggerPresent</code>函数，后面判断了返回值是否为0。因此，猜测这是检查程序是否在调试的，可以看到，调试和不在调试，程序执行流是往不同的方向进行跳转的。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">.text:0040108C                 call    ds:IsDebuggerPresent</span><br><span class="line">.text:00401092                 test    eax, eax</span><br><span class="line">.text:00401094                 jz      short loc_4010B9</span><br></pre></td></tr></table></figure>
-<p><img src="/images/XCTF-Reverse-ExerciseArea-011-writeup/1-2.png" alt=""></p>
 <ol start="3">
 <li>一开始我先修改了<code>IsDebuggerPresent</code>函数的返回值，将其改为0，发现显示的还是乱码；然后我发现基本块0x4010A5 ⇒ 0x4010B7是没有入口的，因此在修改了函数返回值的基础上又修改了<code>.text:00401094 jz short loc_4010B9</code>的跳转地址，跳转到基本块0x4010A5 ⇒ 0x4010B7</li>
 </ol>
@@ -180,11 +179,12 @@
 <ol start="4">
 <li>最后决定在ollydbg中测试运行调试的分支会有什么结果</li>
 </ol>
+<p><img src="./images/1-2.png" alt=""></p>
 <p>可以看到基本块0x401096 ⇒ 0x4010A3中</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">.text:00401096 loc_401096:                             ; CODE XREF: _main+50↑j</span><br><span class="line">.text:00401096                 inc     ecx</span><br><span class="line">.text:00401097                 inc     ecx</span><br><span class="line">.text:00401098                 inc     ecx</span><br><span class="line">.text:00401099                 inc     ecx</span><br><span class="line">.text:0040109A                 int     3               ; Trap to Debugger</span><br><span class="line">.text:0040109B                 mov     edx, [ebp+lpMem]</span><br><span class="line">.text:0040109E                 call    sub_401000</span><br><span class="line">.text:004010A3                 jmp     short loc_4010EF</span><br></pre></td></tr></table></figure>
 <p>有个<code>int 3</code>中断，为调试断点指令。然后将字符串起始地址赋值给了edx寄存器，调用了函数<code>sub_401000</code>。最后直接跳转到进程结束的函数调用</p>
 <p>在ollydbg中调试，可以看到当执行完调用函数<code>sub_401000</code>以后，edx寄存器中的乱码内容被解密出来了，拿到flag。。并且可以看到该函数<code>sub_401000</code>是解密用的函数</p>
-<p><img src="/images/XCTF-Reverse-ExerciseArea-011-writeup/1-3.png" alt=""></p>
+<p><img src="./images/1-3.png" alt=""></p>
 <p>flag为：<code>flag{reversing_is_not_that_hard!}</code></p>
 <p>ps: 如果还要显示在messagebox中的话，就在ollydbg中，把下面指令中的跳转地址0x003D10EF修改为003D10B9即可</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">003D10A3    JMP SHORT 003D10EF</span><br></pre></td></tr></table></figure>
