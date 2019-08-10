@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-08T06:49:22.269Z</updated>
+  <updated>2019-08-10T07:52:15.896Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>XCTF-Reverse-ExerciseArea-011-writeup</title>
+    <link href="http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/"/>
+    <id>http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/</id>
+    <published>2019-08-10T07:51:03.000Z</published>
+    <updated>2019-08-10T07:52:15.896Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;0x00-介绍&quot;&gt;&lt;strong&gt;0x00 介绍&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;本题是xctf攻防世界中Reverse的新手第十一题。题目来源：&lt;code&gt;CSAW CTF 2014&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;给了一个二进制文件csaw2013reversi
+      
+    
+    </summary>
+    
+      <category term="CTF" scheme="http://yoursite.com/categories/CTF/"/>
+    
+    
+      <category term="ReverseEngineering" scheme="http://yoursite.com/tags/ReverseEngineering/"/>
+    
+  </entry>
   
   <entry>
     <title>XCTF-Reverse-ExerciseArea-010-writeup</title>
@@ -481,11 +506,11 @@
       <category term="投资理财" scheme="http://yoursite.com/categories/%E6%8A%95%E8%B5%84%E7%90%86%E8%B4%A2/"/>
     
     
+      <category term="指数基金" scheme="http://yoursite.com/tags/%E6%8C%87%E6%95%B0%E5%9F%BA%E9%87%91/"/>
+    
       <category term="基金定投" scheme="http://yoursite.com/tags/%E5%9F%BA%E9%87%91%E5%AE%9A%E6%8A%95/"/>
     
       <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="指数基金" scheme="http://yoursite.com/tags/%E6%8C%87%E6%95%B0%E5%9F%BA%E9%87%91/"/>
     
   </entry>
   
@@ -511,30 +536,6 @@
       <category term="基金定投" scheme="http://yoursite.com/tags/%E5%9F%BA%E9%87%91%E5%AE%9A%E6%8A%95/"/>
     
       <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-169-求众数</title>
-    <link href="http://yoursite.com/2018/09/08/LeetCode-169-%E6%B1%82%E4%BC%97%E6%95%B0/"/>
-    <id>http://yoursite.com/2018/09/08/LeetCode-169-求众数/</id>
-    <published>2018-09-08T04:49:32.000Z</published>
-    <updated>2018-09-08T07:37:07.804Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题目描述&quot;&gt;&lt;strong&gt;题目描述&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/majority-element/description/&quot; target=&quot;_blank&quot; rel=&quot;no
-      
-    
-    </summary>
-    
-      <category term="数据结构与算法" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
     
   </entry>
   

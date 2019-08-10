@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="0x00 介绍 本题是xctf攻防世界中Reverse的新手第十一题。题目来源：CSAW CTF 2014 给了一个二进制文件csaw2013reversing2.exe，需要对该二进制文件进行逆向分析，找到flag 实验环境：IDA Pro 7.0，gdb 本题考查的是反调试，IsDebuggerPresent函数，int 3中断 0x01 解题过程 1.1 文件分析 windows下的可执行文">
+<meta name="keywords" content="ReverseEngineering">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XCTF-Reverse-ExerciseArea-011-writeup">
+<meta property="og:url" content="http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/index.html">
+<meta property="og:site_name" content="y4ung&#39;s Blog">
+<meta property="og:description" content="0x00 介绍 本题是xctf攻防世界中Reverse的新手第十一题。题目来源：CSAW CTF 2014 给了一个二进制文件csaw2013reversing2.exe，需要对该二进制文件进行逆向分析，找到flag 实验环境：IDA Pro 7.0，gdb 本题考查的是反调试，IsDebuggerPresent函数，int 3中断 0x01 解题过程 1.1 文件分析 windows下的可执行文">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/XCTF-Reverse-ExerciseArea-011-writeup/1-1.png">
+<meta property="og:image" content="http://yoursite.com/images/XCTF-Reverse-ExerciseArea-011-writeup/1-2.png">
+<meta property="og:image" content="http://yoursite.com/images/XCTF-Reverse-ExerciseArea-011-writeup/1-3.png">
+<meta property="og:updated_time" content="2019-08-10T07:52:15.896Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XCTF-Reverse-ExerciseArea-011-writeup">
+<meta name="twitter:description" content="0x00 介绍 本题是xctf攻防世界中Reverse的新手第十一题。题目来源：CSAW CTF 2014 给了一个二进制文件csaw2013reversing2.exe，需要对该二进制文件进行逆向分析，找到flag 实验环境：IDA Pro 7.0，gdb 本题考查的是反调试，IsDebuggerPresent函数，int 3中断 0x01 解题过程 1.1 文件分析 windows下的可执行文">
+<meta name="twitter:image" content="http://yoursite.com/images/XCTF-Reverse-ExerciseArea-011-writeup/1-1.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>XCTF-Reverse-ExerciseArea-011-writeup</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/08/08/XCTF-Reverse-ExerciseArea-010-writeup/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/&text=XCTF-Reverse-ExerciseArea-011-writeup"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/&title=XCTF-Reverse-ExerciseArea-011-writeup"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/&is_video=false&description=XCTF-Reverse-ExerciseArea-011-writeup"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=XCTF-Reverse-ExerciseArea-011-writeup&body=Check out this article: http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/&title=XCTF-Reverse-ExerciseArea-011-writeup"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/&title=XCTF-Reverse-ExerciseArea-011-writeup"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/&title=XCTF-Reverse-ExerciseArea-011-writeup"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/&title=XCTF-Reverse-ExerciseArea-011-writeup"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/&name=XCTF-Reverse-ExerciseArea-011-writeup&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-介绍"><span class="toc-number">1.</span> <span class="toc-text">0x00 介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-解题过程"><span class="toc-number">2.</span> <span class="toc-text">0x01 解题过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-文件分析"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 文件分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-逆向分析"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 逆向分析</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        XCTF-Reverse-ExerciseArea-011-writeup
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">y4ung's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-08-10T07:51:03.000Z" itemprop="datePublished">2019-08-10</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/CTF/">CTF</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/ReverseEngineering/">ReverseEngineering</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="0x00-介绍"><strong>0x00 介绍</strong></h2>
+<p>本题是xctf攻防世界中Reverse的新手第十一题。题目来源：<code>CSAW CTF 2014</code></p>
+<p>给了一个二进制文件csaw2013reversing2.exe，需要对该二进制文件进行逆向分析，找到flag</p>
+<p>实验环境：IDA Pro 7.0，gdb</p>
+<p>本题考查的是反调试，<a href="https://docs.microsoft.com/zh-cn/windows/win32/api/debugapi/nf-debugapi-isdebuggerpresent" target="_blank" rel="noopener">IsDebuggerPresent函数</a>，<a href="https://blog.csdn.net/trochiluses/article/details/20209593" target="_blank" rel="noopener">int 3中断</a></p>
+<h2 id="0x01-解题过程"><strong>0x01 解题过程</strong></h2>
+<h3 id="1-1-文件分析"><strong>1.1 文件分析</strong></h3>
+<p>windows下的可执行文件，32位</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">root@kali:~/hzy/ctf-learning# file csaw2013reversing2.exe </span><br><span class="line">csaw2013reversing2.exe: PE32 executable (console) Intel 80386, for MS Windows</span><br><span class="line">root@kali:~/hzy/ctf-learning#</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-逆向分析"><strong>1.2 逆向分析</strong></h3>
+<ol>
+<li>在windows下运行该文件，发现是一坨乱码， = =||</li>
+</ol>
+<p><img src="/images/XCTF-Reverse-ExerciseArea-011-writeup/1-1.png" alt=""></p>
+<ol start="2">
+<li>能知道的就只有<code>Flag</code>、<code>中止</code>、<code>重试</code>和<code>忽略</code>四个字符串，在这里我先在IDA和Ollydbg里搜索字符串Flag，找到引用它的地方。[ebp-0xC]是乱码字符串的起始地址</li>
+</ol>
+<p>并且在IDA中可以发现基本块0x40108C ⇒ 0x401094处，调用了数据段ds(Data Segment)的<code>IsDebuggerPresent</code>函数，后面判断了返回值是否为0。因此，猜测这是检查程序是否在调试的，可以看到，调试和不在调试，程序执行流是往不同的方向进行跳转的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">.text:0040108C                 call    ds:IsDebuggerPresent</span><br><span class="line">.text:00401092                 test    eax, eax</span><br><span class="line">.text:00401094                 jz      short loc_4010B9</span><br></pre></td></tr></table></figure>
+<p><img src="/images/XCTF-Reverse-ExerciseArea-011-writeup/1-2.png" alt=""></p>
+<ol start="3">
+<li>一开始我先修改了<code>IsDebuggerPresent</code>函数的返回值，将其改为0，发现显示的还是乱码；然后我发现基本块0x4010A5 ⇒ 0x4010B7是没有入口的，因此在修改了函数返回值的基础上又修改了<code>.text:00401094 jz short loc_4010B9</code>的跳转地址，跳转到基本块0x4010A5 ⇒ 0x4010B7</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">push    2               ; uType</span><br><span class="line">push    offset Caption  ; &quot;Flag&quot;</span><br><span class="line">push    [ebp+lpMem]     ; lpText</span><br><span class="line">push    0               ; hWnd</span><br><span class="line">call    ds:MessageBoxA</span><br><span class="line">jmp     short loc_4010CD</span><br></pre></td></tr></table></figure>
+<p>发现还是乱码……</p>
+<ol start="4">
+<li>最后决定在ollydbg中测试运行调试的分支会有什么结果</li>
+</ol>
+<p>可以看到基本块0x401096 ⇒ 0x4010A3中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">.text:00401096 loc_401096:                             ; CODE XREF: _main+50↑j</span><br><span class="line">.text:00401096                 inc     ecx</span><br><span class="line">.text:00401097                 inc     ecx</span><br><span class="line">.text:00401098                 inc     ecx</span><br><span class="line">.text:00401099                 inc     ecx</span><br><span class="line">.text:0040109A                 int     3               ; Trap to Debugger</span><br><span class="line">.text:0040109B                 mov     edx, [ebp+lpMem]</span><br><span class="line">.text:0040109E                 call    sub_401000</span><br><span class="line">.text:004010A3                 jmp     short loc_4010EF</span><br></pre></td></tr></table></figure>
+<p>有个<code>int 3</code>中断，为调试断点指令。然后将字符串起始地址赋值给了edx寄存器，调用了函数<code>sub_401000</code>。最后直接跳转到进程结束的函数调用</p>
+<p>在ollydbg中调试，可以看到当执行完调用函数<code>sub_401000</code>以后，edx寄存器中的乱码内容被解密出来了，拿到flag。。并且可以看到该函数<code>sub_401000</code>是解密用的函数</p>
+<p><img src="/images/XCTF-Reverse-ExerciseArea-011-writeup/1-3.png" alt=""></p>
+<p>flag为：<code>flag{reversing_is_not_that_hard!}</code></p>
+<p>ps: 如果还要显示在messagebox中的话，就在ollydbg中，把下面指令中的跳转地址0x003D10EF修改为003D10B9即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">003D10A3    JMP SHORT 003D10EF</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-介绍"><span class="toc-number">1.</span> <span class="toc-text">0x00 介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-解题过程"><span class="toc-number">2.</span> <span class="toc-text">0x01 解题过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-文件分析"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 文件分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-逆向分析"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 逆向分析</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/&text=XCTF-Reverse-ExerciseArea-011-writeup"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/&title=XCTF-Reverse-ExerciseArea-011-writeup"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/&is_video=false&description=XCTF-Reverse-ExerciseArea-011-writeup"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=XCTF-Reverse-ExerciseArea-011-writeup&body=Check out this article: http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/&title=XCTF-Reverse-ExerciseArea-011-writeup"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/&title=XCTF-Reverse-ExerciseArea-011-writeup"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/&title=XCTF-Reverse-ExerciseArea-011-writeup"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/&title=XCTF-Reverse-ExerciseArea-011-writeup"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/&name=XCTF-Reverse-ExerciseArea-011-writeup&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 y4ung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+</body>
+</html>

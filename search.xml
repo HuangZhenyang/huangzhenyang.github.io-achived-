@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[XCTF-Reverse-ExerciseArea-011-writeup]]></title>
+    <url>%2F2019%2F08%2F10%2FXCTF-Reverse-ExerciseArea-011-writeup%2F</url>
+    <content type="text"><![CDATA[0x00 介绍 本题是xctf攻防世界中Reverse的新手第十一题。题目来源：CSAW CTF 2014 给了一个二进制文件csaw2013reversing2.exe，需要对该二进制文件进行逆向分析，找到flag 实验环境：IDA Pro 7.0，gdb 本题考查的是反调试，IsDebuggerPresent函数，int 3中断 0x01 解题过程 1.1 文件分析 windows下的可执行文件，32位 1234root@kali:~/hzy/ctf-learning# file csaw2013reversing2.exe csaw2013reversing2.exe: PE32 executable (console) Intel 80386, for MS Windowsroot@kali:~/hzy/ctf-learning# 1.2 逆向分析 在windows下运行该文件，发现是一坨乱码， = =|| 能知道的就只有Flag、中止、重试和忽略四个字符串，在这里我先在IDA和Ollydbg里搜索字符串Flag，找到引用它的地方。[ebp-0xC]是乱码字符串的起始地址 并且在IDA中可以发现基本块0x40108C ⇒ 0x401094处，调用了数据段ds(Data Segment)的IsDebuggerPresent函数，后面判断了返回值是否为0。因此，猜测这是检查程序是否在调试的，可以看到，调试和不在调试，程序执行流是往不同的方向进行跳转的。 1234.text:0040108C call ds:IsDebuggerPresent.text:00401092 test eax, eax.text:00401094 jz short loc_4010B9 一开始我先修改了IsDebuggerPresent函数的返回值，将其改为0，发现显示的还是乱码；然后我发现基本块0x4010A5 ⇒ 0x4010B7是没有入口的，因此在修改了函数返回值的基础上又修改了.text:00401094 jz short loc_4010B9的跳转地址，跳转到基本块0x4010A5 ⇒ 0x4010B7 1234567push 2 ; uTypepush offset Caption ; &quot;Flag&quot;push [ebp+lpMem] ; lpTextpush 0 ; hWndcall ds:MessageBoxAjmp short loc_4010CD 发现还是乱码…… 最后决定在ollydbg中测试运行调试的分支会有什么结果 可以看到基本块0x401096 ⇒ 0x4010A3中 12345678910.text:00401096 loc_401096: ; CODE XREF: _main+50↑j.text:00401096 inc ecx.text:00401097 inc ecx.text:00401098 inc ecx.text:00401099 inc ecx.text:0040109A int 3 ; Trap to Debugger.text:0040109B mov edx, [ebp+lpMem].text:0040109E call sub_401000.text:004010A3 jmp short loc_4010EF 有个int 3中断，为调试断点指令。然后将字符串起始地址赋值给了edx寄存器，调用了函数sub_401000。最后直接跳转到进程结束的函数调用 在ollydbg中调试，可以看到当执行完调用函数sub_401000以后，edx寄存器中的乱码内容被解密出来了，拿到flag。。并且可以看到该函数sub_401000是解密用的函数 flag为：flag{reversing_is_not_that_hard!} ps: 如果还要显示在messagebox中的话，就在ollydbg中，把下面指令中的跳转地址0x003D10EF修改为003D10B9即可 12003D10A3 JMP SHORT 003D10EF]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>ReverseEngineering</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[XCTF-Reverse-ExerciseArea-010-writeup]]></title>
     <url>%2F2019%2F08%2F08%2FXCTF-Reverse-ExerciseArea-010-writeup%2F</url>
     <content type="text"><![CDATA[0x00 介绍 本题是xctf攻防世界中Reverse的新手第十题。题目来源：SharifCTF 2016 给了一个二进制文件getit，需要对该二进制文件进行逆向分析，找到flag 实验环境：IDA Pro 7.0，gdb 0x01 解题过程 1.1 文件分析 Linux下的二进制文件，64位系统，符号表未被去掉 123456root@kali:~/hzy/ctf-learning# file getit getit: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.24, BuildID[sha1]=e389cd7a4b9272ba80f85d7eb604176f6106c61e, not strippedroot@kali:~/hzy/ctf-learning# chmod +x getit root@kali:~/hzy/ctf-learning# ./getit root@kali:~/hzy/ctf-learning# 1.2 逆向分析 用IDA打开，发现该二进制文件未被加壳，因此不需要进行脱壳操作 基本块0x400775--0x400788是循环的条件判断，地址rbp+var_40中存储的是循环变量的值，先赋值给eax寄存器，再赋值给ebx，然后调用strlen函数，得到字符串s=c61b68366edeb7bdce3c6820314b7498的长度，保存在eax寄存器中；接下来如果ebx的值，也就是循环变量的值比长度小，就进入循环体，否则退出 基本块0x40078a--0x4007a6是关键的部分。从字符串s=c61b68366edeb7bdce3c6820314b7498中取s[eax]，并赋值给寄存器eax，然后赋值给寄存器ecx；如果循环变量的值（存在eax中）为偶数，则eax赋值为0xffffffff，否则赋值为0x1； 基本块0x4007b4--0x4007c5是主要的部分。寄存器ecx的值加上eax的值，保存在ecx中；这里有个edx寄存器的值给了eax，然后将寄存器ecx的值，也就是当前字符串s的字符赋值给字符串t[rax]。往上溯源看下edx就可以发现，在基本块0x40078a--0x4007a6中，lea edx, [rax+0Ah]，edx每次都通过eax来自增1，因此edx是用来偏移字符串t的。 打印一下发现字符串t其实就是flag字符串，格式为ShariCTF{'?'repet 32 times}也就是说，每次循环都经过3和4的操作，通过字符串s的字符与eax寄存器相加以后的字符，对flag字符串中的?进行填充： 用代码解出flag填充的内容： 12345678910111213141516171819202122s = "c61b68366edeb7bdce3c6820314b7498"res = ""for i, each in enumerate(s): each_ascii = ord(each) if i % 2 == 0: eax = 0xffffffff tmp = eax + each_ascii tmp = int("0x" + hex(tmp)[3:], 16) else: eax = 1 tmp = eax + each_ascii tmp = chr(tmp) res = res + tmpprint(res) 那么flag为：SharifCTF{b70c59275fcfa8aebf2d5911223c6589}]]></content>
@@ -203,9 +214,9 @@
         <category>投资理财</category>
       </categories>
       <tags>
+        <tag>指数基金</tag>
         <tag>基金定投</tag>
         <tag>读书笔记</tag>
-        <tag>指数基金</tag>
       </tags>
   </entry>
   <entry>
