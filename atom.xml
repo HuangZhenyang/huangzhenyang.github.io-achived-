@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-10T08:36:03.488Z</updated>
+  <updated>2019-08-16T03:15:22.208Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>物联网设备固件分析（一）：Firmadyne固件模拟环境搭建</title>
+    <link href="http://yoursite.com/2019/08/16/%E7%89%A9%E8%81%94%E7%BD%91%E8%AE%BE%E5%A4%87%E5%9B%BA%E4%BB%B6%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9AFirmadyne%E5%9B%BA%E4%BB%B6%E6%A8%A1%E6%8B%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <id>http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/</id>
+    <published>2019-08-16T01:58:51.000Z</published>
+    <updated>2019-08-16T03:15:22.208Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;0x01-前言&quot;&gt;&lt;strong&gt;0x01 前言&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;本文介绍了在对固件进行分析的环境准备部分，主要是对Firmadyne这个工具的环境搭建，最后搭建完用Netgear的路由器固件进行测试。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;F
+      
+    
+    </summary>
+    
+      <category term="物联网安全" scheme="http://yoursite.com/categories/%E7%89%A9%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="ReverseEngineering" scheme="http://yoursite.com/tags/ReverseEngineering/"/>
+    
+  </entry>
+  
+  <entry>
     <title>XCTF-Reverse-ExerciseArea-011-writeup</title>
     <link href="http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/"/>
     <id>http://yoursite.com/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/</id>
     <published>2019-08-10T07:51:03.000Z</published>
-    <updated>2019-08-10T08:36:03.488Z</updated>
+    <updated>2019-08-10T08:43:53.877Z</updated>
     
     <summary type="html">
     
@@ -506,36 +532,11 @@
       <category term="投资理财" scheme="http://yoursite.com/categories/%E6%8A%95%E8%B5%84%E7%90%86%E8%B4%A2/"/>
     
     
+      <category term="基金定投" scheme="http://yoursite.com/tags/%E5%9F%BA%E9%87%91%E5%AE%9A%E6%8A%95/"/>
+    
+      <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
       <category term="指数基金" scheme="http://yoursite.com/tags/%E6%8C%87%E6%95%B0%E5%9F%BA%E9%87%91/"/>
-    
-      <category term="基金定投" scheme="http://yoursite.com/tags/%E5%9F%BA%E9%87%91%E5%AE%9A%E6%8A%95/"/>
-    
-      <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《定投基金小白手把手》读书笔记</title>
-    <link href="http://yoursite.com/2018/09/08/%E3%80%8A%E5%AE%9A%E6%8A%95%E5%9F%BA%E9%87%91%E5%B0%8F%E7%99%BD%E6%89%8B%E6%8A%8A%E6%89%8B%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    <id>http://yoursite.com/2018/09/08/《定投基金小白手把手》读书笔记/</id>
-    <published>2018-09-08T15:35:51.000Z</published>
-    <updated>2018-09-09T07:58:41.493Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;https://wenku.baidu.com/view/b1c400a805087632311212dc.html?app=&amp;amp;ala_sign=###&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;定投基金小白手把手.pdf&lt;/
-      
-    
-    </summary>
-    
-      <category term="投资理财" scheme="http://yoursite.com/categories/%E6%8A%95%E8%B5%84%E7%90%86%E8%B4%A2/"/>
-    
-    
-      <category term="基金定投" scheme="http://yoursite.com/tags/%E5%9F%BA%E9%87%91%E5%AE%9A%E6%8A%95/"/>
-    
-      <category term="读书笔记" scheme="http://yoursite.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   

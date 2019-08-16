@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="0x01 前言 本文介绍了在对固件进行分析的环境准备部分，主要是对Firmadyne这个工具的环境搭建，最后搭建完用Netgear的路由器固件进行测试。  Firmadyne是一款自动化分析嵌入式Linux系统安全的开源软件，由卡内基梅隆大学的Daming D. Chen开发完成的。它支持批量检测，整个系统包括固件的爬取、root文件系统的提取、QEMU模拟执行以及漏洞的挖掘。  实验环境及需要的">
+<meta name="keywords" content="ReverseEngineering">
+<meta property="og:type" content="article">
+<meta property="og:title" content="物联网设备固件分析（一）：Firmadyne固件模拟环境搭建">
+<meta property="og:url" content="http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/index.html">
+<meta property="og:site_name" content="y4ung&#39;s Blog">
+<meta property="og:description" content="0x01 前言 本文介绍了在对固件进行分析的环境准备部分，主要是对Firmadyne这个工具的环境搭建，最后搭建完用Netgear的路由器固件进行测试。  Firmadyne是一款自动化分析嵌入式Linux系统安全的开源软件，由卡内基梅隆大学的Daming D. Chen开发完成的。它支持批量检测，整个系统包括固件的爬取、root文件系统的提取、QEMU模拟执行以及漏洞的挖掘。  实验环境及需要的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/%E7%89%A9%E8%81%94%E7%BD%91%E8%AE%BE%E5%A4%87%E5%9B%BA%E4%BB%B6%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9AFirmadyne%E5%9B%BA%E4%BB%B6%E6%A8%A1%E6%8B%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/3-1.png">
+<meta property="og:updated_time" content="2019-08-16T03:15:22.208Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="物联网设备固件分析（一）：Firmadyne固件模拟环境搭建">
+<meta name="twitter:description" content="0x01 前言 本文介绍了在对固件进行分析的环境准备部分，主要是对Firmadyne这个工具的环境搭建，最后搭建完用Netgear的路由器固件进行测试。  Firmadyne是一款自动化分析嵌入式Linux系统安全的开源软件，由卡内基梅隆大学的Daming D. Chen开发完成的。它支持批量检测，整个系统包括固件的爬取、root文件系统的提取、QEMU模拟执行以及漏洞的挖掘。  实验环境及需要的">
+<meta name="twitter:image" content="http://yoursite.com/images/%E7%89%A9%E8%81%94%E7%BD%91%E8%AE%BE%E5%A4%87%E5%9B%BA%E4%BB%B6%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9AFirmadyne%E5%9B%BA%E4%BB%B6%E6%A8%A1%E6%8B%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/3-1.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>物联网设备固件分析（一）：Firmadyne固件模拟环境搭建</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/08/10/XCTF-Reverse-ExerciseArea-011-writeup/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/&text=物联网设备固件分析（一）：Firmadyne固件模拟环境搭建"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/&title=物联网设备固件分析（一）：Firmadyne固件模拟环境搭建"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/&is_video=false&description=物联网设备固件分析（一）：Firmadyne固件模拟环境搭建"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=物联网设备固件分析（一）：Firmadyne固件模拟环境搭建&body=Check out this article: http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/&title=物联网设备固件分析（一）：Firmadyne固件模拟环境搭建"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/&title=物联网设备固件分析（一）：Firmadyne固件模拟环境搭建"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/&title=物联网设备固件分析（一）：Firmadyne固件模拟环境搭建"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/&title=物联网设备固件分析（一）：Firmadyne固件模拟环境搭建"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/&name=物联网设备固件分析（一）：Firmadyne固件模拟环境搭建&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-前言"><span class="toc-number">1.</span> <span class="toc-text">0x01 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-环境配置"><span class="toc-number">2.</span> <span class="toc-text">0x02 环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-克隆firmware-analysis-toolkit工具集仓库"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 克隆Firmware Analysis Toolkit工具集仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-安装binwalk"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 安装binwalk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-安装firmadyne"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 安装Firmadyne</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-安装postgresql数据库"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 安装postgresql数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-安装qemu"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 安装qemu</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-测试运行"><span class="toc-number">3.</span> <span class="toc-text">0x03 测试运行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-总结"><span class="toc-number">4.</span> <span class="toc-text">0x04 总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-参考资料"><span class="toc-number">5.</span> <span class="toc-text">0x05 参考资料</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        物联网设备固件分析（一）：Firmadyne固件模拟环境搭建
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">y4ung's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-08-16T01:58:51.000Z" itemprop="datePublished">2019-08-16</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/物联网安全/">物联网安全</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/ReverseEngineering/">ReverseEngineering</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="0x01-前言"><strong>0x01 前言</strong></h2>
+<p>本文介绍了在对固件进行分析的环境准备部分，主要是对Firmadyne这个工具的环境搭建，最后搭建完用Netgear的路由器固件进行测试。</p>
+<blockquote>
+<p>Firmadyne是一款自动化分析嵌入式Linux系统安全的开源软件，由卡内基梅隆大学的Daming D. Chen开发完成的。它支持批量检测，整个系统包括固件的爬取、root文件系统的提取、QEMU模拟执行以及漏洞的挖掘。</p>
+</blockquote>
+<p>实验环境及需要的工具：</p>
+<ul>
+<li>系统：Ubuntu14.04
+<ul>
+<li>在Kali最新版和Ubuntu16.04LTS上都会有奇奇怪怪的问题，后来在issue中找到作者的实验环境为Ubuntu14.04</li>
+<li>下载：<a href="http://mirrors.ustc.edu.cn/ubuntu-releases/14.04/" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/ubuntu-releases/14.04/</a></li>
+</ul>
+</li>
+<li>工具：
+<ul>
+<li>Firmadyne
+<ul>
+<li>项目地址：<a href="https://github.com/firmadyne/firmadyne" target="_blank" rel="noopener">https://github.com/firmadyne/firmadyne</a></li>
+<li>README.md中有详细的配置和安装步骤</li>
+</ul>
+</li>
+<li><code>Firmware Analysis Toolkit</code>
+<ul>
+<li>项目地址：<a href="https://github.com/attify/firmware-analysis-toolkit" target="_blank" rel="noopener">https://github.com/attify/firmware-analysis-toolkit</a></li>
+<li>该工具集包含了<code>binwalk</code>、<code>Firmadyne</code>等必须的工具。这里我们只需要克隆该仓库到本地即可</li>
+</ul>
+</li>
+<li><code>qemu</code>
+<ul>
+<li>可以直接用apt-get安装，只安装一部分</li>
+<li>也可以从github的仓库编译安装所有的模块</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="0x02-环境配置"><strong>0x02 环境配置</strong></h2>
+<h3 id="2-1-克隆firmware-analysis-toolkit工具集仓库">2.1 克隆<code>Firmware Analysis Toolkit</code>工具集仓库</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#</span> 1. 安装依赖</span><br><span class="line">sudo apt-get install busybox-static fakeroot git dmsetup kpartx netcat-openbsd nmap python-psycopg2 python3-psycopg2 snmp uml-utilities util-linux vlan</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 2. clone </span><br><span class="line">git clone --recursive https://github.com/attify/firmware-analysis-toolkit.git</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-安装binwalk">2.2 安装binwalk</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#</span> 1. 安装依赖和binwalk</span><br><span class="line">cd firmware-analysis-toolkit/binwalk</span><br><span class="line">sudo ./deps.sh</span><br><span class="line">sudo python setup.py install</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 2. 对于 python2.x，还需要安装以下的库</span><br><span class="line">sudo -H pip install git+https://github.com/ahupp/python-magic</span><br><span class="line">sudo -H pip install git+https://github.com/sviehb/jefferson</span><br></pre></td></tr></table></figure>
+<p>测试是否安装成功：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">hzy@ubuntu:~$ binwalk </span><br><span class="line"></span><br><span class="line">Binwalk v2.1.2-c036535</span><br><span class="line">Craig Heffner, ReFirmLabs</span><br><span class="line">https://github.com/ReFirmLabs/binwalk</span><br><span class="line"></span><br><span class="line">Usage: binwalk [OPTIONS] [FILE1] [FILE2] [FILE3] ...</span><br><span class="line"></span><br><span class="line">Disassembly Scan Options:</span><br><span class="line">    -Y, --disasm                 Identify the CPU architecture of a file using the capstone disassembler</span><br><span class="line"></span><br><span class="line">... ...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    -s, --status=&lt;int&gt;           Enable the status server on the specified port</span><br><span class="line"></span><br><span class="line">hzy@ubuntu:~$</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-安装firmadyne">2.3 安装Firmadyne</h3>
+<ol>
+<li>进入Firmadyne目录，然后打开<code>firmadyne.config</code>，修改 FIRMWARE_DIR的路径为当前Firmadyne目录的绝对路径</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">cd firmware-analysis-toolkit/firmadyne</span><br><span class="line"></span><br><span class="line">vim firmadyne.config</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 以下为firmadyne.config中的内容</span><br><span class="line"><span class="meta">#</span>!/bin/sh</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> uncomment and specify full path to FIRMADYNE repository</span><br><span class="line">FIRMWARE_DIR=/home/hzy/firmware-analysis-toolkit/firmadyne/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> specify full paths to other directories</span><br><span class="line">BINARY_DIR=$&#123;FIRMWARE_DIR&#125;/binaries/</span><br><span class="line">TARBALL_DIR=$&#123;FIRMWARE_DIR&#125;/images/</span><br><span class="line">SCRATCH_DIR=$&#123;FIRMWARE_DIR&#125;/scratch/</span><br><span class="line">SCRIPT_DIR=$&#123;FIRMWARE_DIR&#125;/scripts/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> functions to safely compute other paths</span><br><span class="line"></span><br><span class="line">... ...</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>安装Firmadyne</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sh ./download.sh</span><br></pre></td></tr></table></figure>
+<h3 id="2-4-安装postgresql数据库">2.4 安装postgresql数据库</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sudo apt-get install postgresql</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 用户的密码设置为：firmadyne</span><br><span class="line">sudo -u postgres createuser -P firmadyne, with password firmadyne</span><br><span class="line"></span><br><span class="line">sudo -u postgres createdb -O firmadyne firmware</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 注意这里的数据库文件是在firmadyne/目录下，也就是该命令要在根目录firmware-analysis-toolkit/目录下执行</span><br><span class="line">sudo -u postgres psql -d firmware &lt; ./firmadyne/database/schema</span><br></pre></td></tr></table></figure>
+<p>启动postgresql数据库，确认其正在运行。</p>
+<ul>
+<li>这里我在kali测试的时候，如果没有先启动数据库，就进行添加用户的命令会报错。</li>
+<li>还遇到了一个问题，明明数据库服务在运行，但是添加用户的时候一直报的错也是服务没有运行的错，这种情况下我是直接重装了一遍postgresql</li>
+<li>具体出现的错大家可以在网上搜索解决方案即可。一般还是有现成的方法的。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sudo service postgresql start</span><br><span class="line"></span><br><span class="line">sudo service postgresql status</span><br></pre></td></tr></table></figure>
+<h3 id="2-5-安装qemu">2.5 安装qemu</h3>
+<blockquote>
+<p>QEMU是一套由法布里斯·贝拉(Fabrice Bellard)所编写的以GPL许可证分发源码的模拟处理器，在GNU/Linux平台上使用广泛。</p>
+</blockquote>
+<p>这里有两种安装方法：</p>
+<ul>
+<li>
+<p>直接通过apt-get安装</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install qemu-system-arm qemu-system-mips qemu-system-x86 qemu-utils</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>编译安装</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git clone git://git.qemu.org/qemu.git</span><br><span class="line">cd qemu</span><br><span class="line">git submodule init</span><br><span class="line">git submodule update --recursivesudo</span><br><span class="line">apt install libglib2.0 libglib2.0-devsudo</span><br><span class="line">apt install autoconf automake libtoolcd </span><br><span class="line">​qemu &amp;&amp; ./configuremakesudo make install</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="0x03-测试运行"><strong>0x03 测试运行</strong></h2>
+<ol>
+<li>将firmware-analysis-toolkit/目录下的fat.py和reset.py移动到firmadyne/目录下：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mv fat.py ./firmadyne</span><br><span class="line">mv reset.py ./firmadyne</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改fat.py中的执行权限、firmadyne的路径<code>firmadyne_path</code>以及root密码<code>root_pass</code></li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">chmod +x fat.py</span><br><span class="line"></span><br><span class="line">vim fat.py</span><br><span class="line"><span class="meta">#</span> 以下是fat.py中的内容</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>!/usr/bin/env python2.7</span><br><span class="line"></span><br><span class="line">import os</span><br><span class="line">import pexpect</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> Put this script in the firmadyne path downloadable from</span><br><span class="line"><span class="meta">#</span> https://github.com/firmadyne/firmadyne</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>Configurations - change this according to your system</span><br><span class="line">firmadyne_path = "/home/hzy/firmware-analysis-toolkit/firmadyne"</span><br><span class="line">binwalk_path = "/usr/local/bin/binwalk"</span><br><span class="line">root_pass = "123456"</span><br><span class="line">firmadyne_pass = "firmadyne"</span><br><span class="line"></span><br><span class="line">... ...</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>下载要模拟的路由器固件</li>
+</ol>
+<ul>
+<li>
+<p>要模拟的路由器为：WNAP320，在<code>https://www.netgear.com/support/product/WNAP320.aspx#Firmware%20Version%203.7.11.4</code>中下载固件文件</p>
+</li>
+<li>
+<p>假设我这里将固件文件重命名为 netgear.zip，并放在/home/hzy/firmware/目录下</p>
+</li>
+</ul>
+<ol start="4">
+<li>测试运行</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">hzy@ubuntu:~/firmware-analysis-toolkit/firmadyne$ sudo ./fat.py </span><br><span class="line">[sudo] password for hzy: </span><br><span class="line"></span><br><span class="line">                               __           _   </span><br><span class="line">                              / _|         | |  </span><br><span class="line">                             | |_    __ _  | |_ </span><br><span class="line">                             |  _|  / _` | | __|</span><br><span class="line">                             | |   | (_| | | |_ </span><br><span class="line">                             |_|    \__,_|  \__|                    </span><br><span class="line">                    </span><br><span class="line">                Welcome to the Firmware Analysis Toolkit - v0.2</span><br><span class="line">    Offensive IoT Exploitation Training  - http://offensiveiotexploitation.com</span><br><span class="line">                  By Attify - https://attify.com  | @attifyme</span><br><span class="line">    </span><br><span class="line">[?] Enter the name or absolute path of the firmware you want to analyse : /home/hzy/firmware/netgear.zip</span><br><span class="line">[?] Enter the brand of the firmware : Netgear</span><br><span class="line">[+] Now going to extract the firmware. Hold on..</span><br><span class="line">[+] Firmware : /home/hzy/firmware/netgear.zip</span><br><span class="line">[+] Brand : Netgear</span><br><span class="line">[+] Database image ID : 2</span><br><span class="line">[+] Identifying architecture</span><br><span class="line">[+] Architecture : mipseb</span><br><span class="line">[+] Storing filesystem in database</span><br><span class="line">[!] Filesystem already exists</span><br><span class="line">[+] Building QEMU disk image</span><br><span class="line">[+] Setting up the network connection, please standby</span><br><span class="line">[+] Network interfaces : [('brtrunk', '192.168.0.100')]</span><br><span class="line">[+] Running the firmware finally</span><br><span class="line">[+] command line : sudo /home/hzy/firmware-analysis-toolkit/firmadyne/scratch/2/run.sh</span><br><span class="line">[*] Press ENTER to run the firmware...</span><br></pre></td></tr></table></figure>
+<p>从<code>[+] Network interfaces : [('brtrunk', '192.168.0.100')]</code>可以看到，启动了一个服务，可以通过192.168.0.100访问</p>
+<p>接下里按<code>Enter</code>键运行该固件，等运行完了以后就可以从浏览器访问了：</p>
+<p><img src="/images/%E7%89%A9%E8%81%94%E7%BD%91%E8%AE%BE%E5%A4%87%E5%9B%BA%E4%BB%B6%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9AFirmadyne%E5%9B%BA%E4%BB%B6%E6%A8%A1%E6%8B%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/3-1.png" alt=""></p>
+<h2 id="0x04-总结"><strong>0x04 总结</strong></h2>
+<p>主要还是参考了参考资料1，但是中间踩了很多坑，可以查阅参考资料3。</p>
+<p>这个firmadyne还有其他的用法，可以参考下参考资料2。这篇文章就点到为止啦。</p>
+<blockquote>
+<p>为了装这个分析环境，前前后后折腾了三个虚拟机。装软件和配环境是我的一生之敌！！(ಥ_ಥ) <br>
+By:hzy</p>
+</blockquote>
+<h2 id="0x05-参考资料"><strong>0x05 参考资料</strong></h2>
+<ol>
+<li><a href="https://paper.seebug.org/639/" target="_blank" rel="noopener">物联网设备的固件模拟环境搭建</a></li>
+<li><a href="http://www.10tiao.com/html/523/201610/2458280280/2.html" target="_blank" rel="noopener">嵌入式Linux固件模拟与安全分析系统Firmadyne交流</a></li>
+<li><a href="https://github.com/attify/firmware-analysis-toolkit/issues/15" target="_blank" rel="noopener">Error:Traceback.</a></li>
+</ol>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-前言"><span class="toc-number">1.</span> <span class="toc-text">0x01 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-环境配置"><span class="toc-number">2.</span> <span class="toc-text">0x02 环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-克隆firmware-analysis-toolkit工具集仓库"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 克隆Firmware Analysis Toolkit工具集仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-安装binwalk"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 安装binwalk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-安装firmadyne"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 安装Firmadyne</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-安装postgresql数据库"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 安装postgresql数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-安装qemu"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 安装qemu</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-测试运行"><span class="toc-number">3.</span> <span class="toc-text">0x03 测试运行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-总结"><span class="toc-number">4.</span> <span class="toc-text">0x04 总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-参考资料"><span class="toc-number">5.</span> <span class="toc-text">0x05 参考资料</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/&text=物联网设备固件分析（一）：Firmadyne固件模拟环境搭建"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/&title=物联网设备固件分析（一）：Firmadyne固件模拟环境搭建"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/&is_video=false&description=物联网设备固件分析（一）：Firmadyne固件模拟环境搭建"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=物联网设备固件分析（一）：Firmadyne固件模拟环境搭建&body=Check out this article: http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/&title=物联网设备固件分析（一）：Firmadyne固件模拟环境搭建"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/&title=物联网设备固件分析（一）：Firmadyne固件模拟环境搭建"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/&title=物联网设备固件分析（一）：Firmadyne固件模拟环境搭建"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/&title=物联网设备固件分析（一）：Firmadyne固件模拟环境搭建"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/&name=物联网设备固件分析（一）：Firmadyne固件模拟环境搭建&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 y4ung
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+</body>
+</html>
