@@ -6,19 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="0x01 前言 本文介绍了在对固件进行分析的环境准备部分，主要是对Firmadyne这个工具的环境搭建，最后搭建完用Netgear的路由器固件进行测试。  Firmadyne是一款自动化分析嵌入式Linux系统安全的开源软件，由卡内基梅隆大学的Daming D. Chen开发完成的。它支持批量检测，整个系统包括固件的爬取、root文件系统的提取、QEMU模拟执行以及漏洞的挖掘。  实验环境及需要的">
+    <meta name="description" content="0x01 前言 本文介绍了在对固件进行分析的环境准备部分，主要是对Firmadyne这个工具的环境搭建，最后搭建完用Netgear的路由器固件进行测试。 安装完后测试了一下，在我测试的几个固件中（Tenda路由器，Cisco交换机、防火墙、路由器，D-Link路由器），目前只能运行大部分的路由器的固件，交换机和防火墙的固件都运行不起来。  Firmadyne是一款自动化分析嵌入式Linux系统安全">
 <meta name="keywords" content="ReverseEngineering">
 <meta property="og:type" content="article">
 <meta property="og:title" content="物联网设备固件分析（一）：Firmadyne固件模拟环境搭建">
 <meta property="og:url" content="http://yoursite.com/2019/08/16/物联网设备固件分析（一）：Firmadyne固件模拟环境搭建/index.html">
 <meta property="og:site_name" content="y4ung&#39;s Blog">
-<meta property="og:description" content="0x01 前言 本文介绍了在对固件进行分析的环境准备部分，主要是对Firmadyne这个工具的环境搭建，最后搭建完用Netgear的路由器固件进行测试。  Firmadyne是一款自动化分析嵌入式Linux系统安全的开源软件，由卡内基梅隆大学的Daming D. Chen开发完成的。它支持批量检测，整个系统包括固件的爬取、root文件系统的提取、QEMU模拟执行以及漏洞的挖掘。  实验环境及需要的">
+<meta property="og:description" content="0x01 前言 本文介绍了在对固件进行分析的环境准备部分，主要是对Firmadyne这个工具的环境搭建，最后搭建完用Netgear的路由器固件进行测试。 安装完后测试了一下，在我测试的几个固件中（Tenda路由器，Cisco交换机、防火墙、路由器，D-Link路由器），目前只能运行大部分的路由器的固件，交换机和防火墙的固件都运行不起来。  Firmadyne是一款自动化分析嵌入式Linux系统安全">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/%E7%89%A9%E8%81%94%E7%BD%91%E8%AE%BE%E5%A4%87%E5%9B%BA%E4%BB%B6%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9AFirmadyne%E5%9B%BA%E4%BB%B6%E6%A8%A1%E6%8B%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/3-1.png">
-<meta property="og:updated_time" content="2019-08-16T03:23:43.697Z">
+<meta property="og:updated_time" content="2019-08-18T04:09:05.358Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="物联网设备固件分析（一）：Firmadyne固件模拟环境搭建">
-<meta name="twitter:description" content="0x01 前言 本文介绍了在对固件进行分析的环境准备部分，主要是对Firmadyne这个工具的环境搭建，最后搭建完用Netgear的路由器固件进行测试。  Firmadyne是一款自动化分析嵌入式Linux系统安全的开源软件，由卡内基梅隆大学的Daming D. Chen开发完成的。它支持批量检测，整个系统包括固件的爬取、root文件系统的提取、QEMU模拟执行以及漏洞的挖掘。  实验环境及需要的">
+<meta name="twitter:description" content="0x01 前言 本文介绍了在对固件进行分析的环境准备部分，主要是对Firmadyne这个工具的环境搭建，最后搭建完用Netgear的路由器固件进行测试。 安装完后测试了一下，在我测试的几个固件中（Tenda路由器，Cisco交换机、防火墙、路由器，D-Link路由器），目前只能运行大部分的路由器的固件，交换机和防火墙的固件都运行不起来。  Firmadyne是一款自动化分析嵌入式Linux系统安全">
 <meta name="twitter:image" content="http://yoursite.com/images/%E7%89%A9%E8%81%94%E7%BD%91%E8%AE%BE%E5%A4%87%E5%9B%BA%E4%BB%B6%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9AFirmadyne%E5%9B%BA%E4%BB%B6%E6%A8%A1%E6%8B%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/3-1.png">
     
     
@@ -152,6 +152,7 @@
   <div class="content" itemprop="articleBody">
     <h2 id="0x01-前言"><strong>0x01 前言</strong></h2>
 <p>本文介绍了在对固件进行分析的环境准备部分，主要是对Firmadyne这个工具的环境搭建，最后搭建完用Netgear的路由器固件进行测试。</p>
+<p>安装完后测试了一下，在我测试的几个固件中（Tenda路由器，Cisco交换机、防火墙、路由器，D-Link路由器），目前只能运行大部分的路由器的固件，交换机和防火墙的固件都运行不起来。</p>
 <blockquote>
 <p>Firmadyne是一款自动化分析嵌入式Linux系统安全的开源软件，由卡内基梅隆大学的Daming D. Chen开发完成的。它支持批量检测，整个系统包括固件的爬取、root文件系统的提取、QEMU模拟执行以及漏洞的挖掘。</p>
 </blockquote>
